@@ -1,0 +1,18 @@
+#FwLib       :HML_FwLib_STC10
+#Description :record file about HML_FwLib_STC10
+#E-mail      :mcu@zhishant-iot.tk
+#Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
+#Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc10.html
+
+#RELEASE RECORD
+
+>Version :v0.0.0
+ Alias   :V0R1
+ Date    :2018-11-07
+ Note    :The first version of HML_FwLib_STC10! It covers all on-chip resource of STC10 MCU, including extended IO, IAP, watchdog and so on!
+		  
+#TEAM
+ Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
+ Director  - Weilun Fong (wlf@zhishan-iot.tk)
+ Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)
+ 

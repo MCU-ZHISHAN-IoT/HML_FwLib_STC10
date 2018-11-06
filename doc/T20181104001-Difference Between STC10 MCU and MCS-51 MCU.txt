@@ -1,0 +1,32 @@
+============================================================
+#Document-name: Difference Between STC10 MCU and MCS-51 MCU
+#Author:
+ > Liang Wu    | waleema(at)zhishan-iot.tk 
+ > Weilun Fong | wlf(at)zhishan-iot.tk
+#Date: 2018-11-05
+#Description: Record difference between STC Micro STC10 series MCU and Intel MCS-51 MCU
+#Document-code: T20181104001
+#Encoding:utf-8
+============================================================
+
+STC10 series MCU is a kind of micro-controller, which based on Intel MCS-51 MCU, released by STC Micro(宏晶), China. And there are following difference between them.
+
+1. [GPIO] Add the push-pull mode, the open-drain mode and the high-impedance mode for the GPIO ports; Add the P4 GPIO port.
+
+2. [IAP] Add the IAP module. In fact, it's a on-chip EEPROM which can be accessed by user freely. Besides, it can be configured as the entry point of the program.
+
+3. [MEM] Add an expansion memory which is physically embedded on the same chips with MCU while logically independent with MCU. It can be enabled through calling the MEM_cmd_internalExtendedRam function.
+
+4. [Power] Low voltage detection pin is added in STC10 MCUs. Besides, an interruption(LVD) will be raised when input voltage of the pin is under the threshold.
+
+5. [Power] Implement the POF bit in the PCON register. Add the power down mode and idle mode, user can save power consumption by these modes.
+
+6. [RCC] It's not necessary to make sure to provide extern clock source, because of internal RC clock; the programmable division factor and the MCO module.
+
+7. [RCC] Add the software reset function. The programs can reset the MCU by resetting the corresponding register flag bit.
+
+8. [Timer] No timer-2.
+
+9. [UART] Add the independent baud rate generator(BRT) for the UART; Add the 1T/12T mode for the UART.
+
+10. [Watchdog] Add the watchdog module.

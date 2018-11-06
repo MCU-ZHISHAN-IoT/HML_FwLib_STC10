@@ -1,0 +1,118 @@
+/*
+ * @Author:
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
+ * @File-description:reset and clock control
+ * @Required-compiler:SDCC
+ * @Support-mcu:STC micro STC10 series
+ * @Version:V0
+ */
+ 
+#include "rcc.h"
+
+#ifdef ___COMPILE_RCC___
+
+u8 df = 0x1;       /* mark current divided factor */
+
+/*
+ * @Prototype:void RCC_BRT_cmd(Action a)
+ * @Parameter:(1)a:expected action:enable or disable
+ * @Ret-val:None
+ * @Note:control switch status of BRT module
+ */
+void RCC_BRT_cmd(Action a)
+{
+	AUXR = (AUXR & 0xEF) | (a << 0x4);
+}
+
+/*
+ * @Prototype:void RCC_BRT_setClockOutput(Action a)
+ * @Parameter:(1)a:expected action:enable or disable
+ * @Ret-val:None
+ * @Note:
+ *  (1)control status of clock output via P10 from BRT module
+ *  (2)the frequency value of output clock is _SYS_CLK_/(256-BRT)/2 (under 1T mode) or _SYS_CLK_/12/(256-BRT)/2 (under 12T mode)
+ */
+void RCC_BRT_setClockOutput(Action a)
+{
+	WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x3);
+}
+
+/*
+ * @Prototype:void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre)
+ * @Parameter:(1)pre:expected prescaler mode
+ * @Ret-val:None
+ * @Note:set prescaler mode of BRT module
+ */
+void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre)
+{
+	AUXR = (AUXR & 0xFB) | pre;
+}
+
+/*
+ * @Prototype:void RCC_BRT_setValue(unsigned char val)
+ * @Parameter:(1)val:target value
+ * @Ret-val:None
+ * @Note:set value of BRT reload register
+ */
+void RCC_BRT_setValue(unsigned char val)
+{
+	BRT = val;
+}
+
+/*
+ * @Prototype:long RCC_getFactoryClockFrequency(void)
+ * @Parameter:None
+ * @Ret-val:frequency value of factory internal RC clock
+ * @Note:get frequency value of factory internal RC clock from RAM (address range is 0xFB-0xFF)
+ */
+// long RCC_getFactoryClockFrequency(void)
+// {
+	// long fre = 0;
+	// u8 i = 0;
+	
+	// IAP_cmd(ENABLE);
+	// for(i = 0;i < 0x4;i++)
+	// {
+		// fre = fre + IAP_readByte(_RAM_FRE_FACTORY_ + i) * (pow(10,i));
+	// }
+	// IAP_cmd(DISABLE);
+	
+	// return fre;
+// }
+
+/*
+ * @Prototype:void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
+ * @Parameter:(1)d:division factor
+ * @Ret-val:
+ * @Note:set division factor of system clock
+ */
+void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
+{
+	CLK_DIV = (byte)d;
+	df = pow(2,d);
+}
+
+/*
+ * @Prototype:void RCC_softwareReset(void)
+ * @Parameter:None
+ * @Ret-val:None
+ * @Note:reset MCU
+ */
+void RCC_softwareReset(void)
+{
+	IAP_CONTR = IAP_CONTR | 0x20;
+}
+
+/*
+ * @Prototype:uint32_t RCC_getSystemClockFrequency(void)
+ * @Parameter:None
+ * @Ret-val:current system clock frequency
+ * @Note:get current system clock frequency
+ */
+uint32_t RCC_getSystemClockFrequency(void)
+{
+	return (_FRE_OSC_/df);
+}
+
+#endif
