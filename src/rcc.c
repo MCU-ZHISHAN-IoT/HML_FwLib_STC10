@@ -61,27 +61,6 @@ void RCC_BRT_setValue(unsigned char val)
 }
 
 /*
- * @Prototype:long RCC_getFactoryClockFrequency(void)
- * @Parameter:None
- * @Ret-val:frequency value of factory internal RC clock
- * @Note:get frequency value of factory internal RC clock from RAM (address range is 0xFB-0xFF)
- */
-// long RCC_getFactoryClockFrequency(void)
-// {
-	// long fre = 0;
-	// u8 i = 0;
-	
-	// IAP_cmd(ENABLE);
-	// for(i = 0;i < 0x4;i++)
-	// {
-		// fre = fre + IAP_readByte(_RAM_FRE_FACTORY_ + i) * (pow(10,i));
-	// }
-	// IAP_cmd(DISABLE);
-	
-	// return fre;
-// }
-
-/*
  * @Prototype:void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
  * @Parameter:(1)d:division factor
  * @Ret-val:

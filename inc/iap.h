@@ -29,29 +29,27 @@ typedef enum
 /* ---------- address define --------- */
 #define IAP_ADDR_START 0x0000
 
-#if (MCU_MODEL == MCU_STC10F02XE) || \
-    (MCU_MODEL == MCU_STC10L02XE) || \
-    (MCU_MODEL == MCU_STC10F04XE) || \
-    (MCU_MODEL == MCU_STC10L04XE) || \
-    (MCU_MODEL == MCU_STC10F06XE) || \
-    (MCU_MODEL == MCU_STC10L06XE) || \
-    (MCU_MODEL == MCU_STC10F08XE) || \
-    (MCU_MODEL == MCU_STC10L08XE)
+#if (_MCU_MODEL_ == _MCU_STC10F02XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10L02XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10F04XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10L04XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10F06XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10L06XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10F08XE_) || \
+    (_MCU_MODEL_ == _MCU_STC10L08XE_)
     #define IAP_ADDR_END 0x13FF
 #else
-    #if (MCU_MODEL == MCU_STC10F10XE)   || \
-        (MCU_MODEL == MCU_STC10L10XE)
+    #if (_MCU_MODEL_ == _MCU_STC10F10XE_)   || \
+        (_MCU_MODEL_ == _MCU_STC10L10XE_)
         #define IAP_ADDR_END 0x0BFF
-    #elif (MCU_MODEL == MCU_STC10F12XE) || \
-          (MCU_MODEL == MCU_STC10L12XE)
+    #elif (_MCU_MODEL_ == _MCU_STC10F12XE_) || \
+          (_MCU_MODEL_ == _MCU_STC10L12XE_)
           #define IAP_ADDR_END 0x03FF
-    #elif (MCU_MODEL == MCU_IAP10F14X)  || \
-          (MCU_MODEL == MCU_IAP10L14X)
+    #elif (_MCU_MODEL_ == _MCU_IAP10F14X_)  || \
+          (_MCU_MODEL_ == _MCU_IAP10L14X_)
           #define IAP_ADDR_END 0x37FF
     #endif
 #endif
-
-#define IAP_ADDR_FRE_FACTORY 0xF8 /* factory internal clock frequency data is stored in this area:0xFC~0xFF */
 
 /* ----- @function ----- */
 void IAP_cmd(Action a);

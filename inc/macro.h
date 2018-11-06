@@ -34,25 +34,25 @@ typedef enum
 } FunctionalState;
 
 /* mark model */
-#define MCU_NULL        0
-#define MCU_STC10F02XE  1
-#define MCU_STC10L02XE  1
-#define MCU_STC10F04XE  2
-#define MCU_STC10L04XE  2
-#define MCU_STC10F06XE  3
-#define MCU_STC10L06XE  3
-#define MCU_STC10F08XE  4
-#define MCU_STC10L08XE  4
-#define MCU_STC10F10XE  5
-#define MCU_STC10L10XE  5
-#define MCU_STC10F12XE  6
-#define MCU_STC10L12XE  6
-#define MCU_IAP10F14X   7
-#define MCU_IAP10L14X   7
+#define _MCU_NULL_           0
+#define _MCU_STC10F02XE_     1
+#define _MCU_STC10L02XE_     1
+#define _MCU_STC10F04XE_     2
+#define _MCU_STC10L04XE_     2
+#define _MCU_STC10F06XE_     3
+#define _MCU_STC10L06XE_     3
+#define _MCU_STC10F08XE_     4
+#define _MCU_STC10L08XE_     4
+#define _MCU_STC10F10XE_     5
+#define _MCU_STC10L10XE_     5
+#define _MCU_STC10F12XE_     6
+#define _MCU_STC10L12XE_     6
+#define _MCU_IAP10F14X_      7
+#define _MCU_IAP10L14X_      7
 
 /* ---------- NEED TO CONFIG MANUALLY !!! ---------- */
 /* configure MCU model, default value is MCU_STC10F02XE */
-#define MCU_MODEL MCU_STC10F02XE
+#define _MCU_MODEL_ _MCU_STC10F02XE_
 
 /* configure input clock frequency */
 #define _FRE_OSC_ 11059200L
@@ -73,7 +73,7 @@ typedef enum
 /* ---------- END OF MANUAL CONFIGURATON PART --------- */
 
 /* ---------- @run-time check --------- */
-#if (MCU_MODEL == MCU_NULL)
+#if (_MCU_MODEL_ == _MCU_NULL_)
 	#error HML run-time check:not specify MCU model! (ERROR_CODE-0x01)
 #endif
 

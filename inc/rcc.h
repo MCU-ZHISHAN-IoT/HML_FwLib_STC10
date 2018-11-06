@@ -42,7 +42,6 @@ void RCC_BRT_cmd(Action a);
 void RCC_BRT_setClockOutput(Action a);
 void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre);
 void RCC_BRT_setValue(unsigned char val);
-//long RCC_getFactoryClockFrequency(void);
 void RCC_setClockDivisionFactor(RCC_CLK_divFactor d);
 void RCC_softwareReset(void);
 uint32_t RCC_getSystemClockFrequency(void);
