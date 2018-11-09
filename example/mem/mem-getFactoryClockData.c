@@ -25,7 +25,7 @@
 void app_getFactoryClockData(byte *dat)
 {
     u8 i = 0;
-    
+
     /* the data is stored in a specified area, address range of the ara is from 0xFC to 0xFF in internal RAM of STC10 MCU */
     for(i = 0;i < 4;i++)
     {
@@ -41,19 +41,19 @@ void app_getFactoryClockData(byte *dat)
  */
 void sys_init(void)
 {
-	UART_configTypeDef uc;
-	
-	uc.baudrate = 9600;                     /* baud rate is 9600bps */
-	uc.baudGenerator = UART_BGR_BRT;        /* select BRT as baud rate generator */
-	uc.baudGeneratorPrescalerState = ENABLE;
-	uc.interruptState = ENABLE;
-	uc.interruptPriority = DISABLE;
-	uc.mode = UART_mode_1;
-	uc.multiBaudrate = DISABLE;
-	uc.pinmap = UART_pinmap_0;
-	uc.receiveState  = ENABLE;
+    UART_configTypeDef uc;
 
-	UART_config(&uc);
+    uc.baudrate = 9600;                     /* baud rate is 9600bps */
+    uc.baudGenerator = UART_BGR_BRT;        /* select BRT as baud rate generator */
+    uc.baudGeneratorPrescalerState = ENABLE;
+    uc.interruptState = ENABLE;
+    uc.interruptPriority = DISABLE;
+    uc.mode = UART_mode_1;
+    uc.multiBaudrate = DISABLE;
+    uc.pinmap = UART_pinmap_0;
+    uc.receiveState  = ENABLE;
+
+    UART_config(&uc);
 }
 
 /*
@@ -66,7 +66,7 @@ void util_byteToHexString(byte src,char *res)
 {
     u8 i = 2;
     byte tmp = 0;
-    
+
     res = res + 2;
     *res = '\0';
     
@@ -74,7 +74,7 @@ void util_byteToHexString(byte src,char *res)
     {
         res--;
         tmp = src % 0x10;
-        
+
         if(tmp < 10)
         {
             *res = '0' + tmp;

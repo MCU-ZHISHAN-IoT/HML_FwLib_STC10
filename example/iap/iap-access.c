@@ -36,7 +36,7 @@ void sys_init(void)
 	uc.pinmap = UART_pinmap_0;
 	uc.receiveState  = ENABLE;
 
-	UART_config(&uc);
+    UART_config(&uc);
     IAP_cmd(ENABLE);
 }
 
@@ -76,12 +76,12 @@ void util_byteToHexString(byte src,char *res)
 void main(void)
 {
     char accessResult[3];    /* store results */
-    
-	sys_init();
+
+    sys_init();
     UART_sendString("MCU boot...\r\n\0");
-    
-	while(true)
-	{       
+
+    while(true)
+    {       
         /* write */
         if(IAP_writeByte(IAP_ADDR_TEST,TEST_BYTE))
         {
@@ -91,13 +91,13 @@ void main(void)
         {
             UART_sendString("Fail to write test byte\r\n\0");
         }
-        
+
         /* read and show access result */
         util_byteToHexString(IAP_readByte(IAP_ADDR_TEST),accessResult);       
         UART_sendString("Access result: 0x");
         UART_sendString(accessResult);
         UART_sendString("\r\n\0");
-        
-		sleep(1000);
-	}
+
+        sleep(1000);
+    }
 }

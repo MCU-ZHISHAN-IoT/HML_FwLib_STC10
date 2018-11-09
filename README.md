@@ -27,7 +27,7 @@ HML_FwLib_STC10
 ├─example  #provide some example files with *.c format to help users learn about HML_FwLib_STC10
 ├─inc      #include all header files(*.h) of HML_FwLib_STC10
 ├─obj      #store all output files, including *.hex,*.ihx,*.lk,*.rel and others during compilation
-├─src      #store all source files(*.c) of HML_FwLib_STC89
+├─src      #store all source files(*.c) of HML_FwLib_STC10
 └─usr      #store makefile and a source file which includes main function
 ```
 ### configuration
@@ -37,7 +37,7 @@ The macro mark frequency of clock source, including extern crystal oscillator or
 #### \_MCU\_MODEL\_
 The macro mark the model of target MCU and is defined in *macro.h*. The default value is `_MCU_STC10F02XE_`.
 #### conditional compilation
-In order to ensure the projects based on HML_FwLib_STC89 can be downloaded into the limited on-chip flash space of STC89 MCUs, the developers can modify the macro definition named `___COMPILE_XXX___` in *macro.h* to specify which piece of code should be compiled, thus to reduce the size of the HEX file. If user only use GPIO module, then user just need to enable `___COMPILE_GPIO___` macro definition in macro.h. Some macros for conditional compilation rely on others. For example, before you define the macro definition `___COMPILE_UART___`, the macro `___COMPILE_EXTI___`, `___COMPILE_TIM___` and `___COMPILE_TIM2___` should be defined, otherwise the compilation would be failed.
+In order to ensure the projects based on HML_FwLib_STC10 can be downloaded into the limited on-chip flash space of STC89 MCUs, the developers can modify the macro definition named `___COMPILE_XXX___` in *macro.h* to specify which piece of code should be compiled, thus to reduce the size of the HEX file. If user only use GPIO module, then user just need to enable `___COMPILE_GPIO___` macro definition in macro.h. Some macros for conditional compilation rely on others. For example, before you define the macro definition `___COMPILE_UART___`, the macro `___COMPILE_EXTI___`, `___COMPILE_TIM___` and `___COMPILE_TIM2___` should be defined, otherwise the compilation would be failed.
 ### code & compilation
 There is a source file named *test.c* under *usr* directory, we have put a main function here. User can add and modify own code here, then enter <kbd>make</kbd> in terminal(you had better use [Cygwin](http://www.cygwin.com/) instead of cmd.exe under Windows), the Makefile will work and complete compilation. Certainly, you can just add *inc* and *src* directory into your project structure, and write your own makefile to build a custom project. 
 
