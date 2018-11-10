@@ -24,17 +24,17 @@
  */
 void sys_init(void)
 {
-	UART_configTypeDef uc;
-	
-	uc.baudrate = 9600;                     /* baud rate is 9600bps */
-	uc.baudGenerator = UART_BGR_BRT;        /* select BRT as baud rate generator */
-	uc.baudGeneratorPrescalerState = ENABLE;
-	uc.interruptState = ENABLE;
-	uc.interruptPriority = DISABLE;
-	uc.mode = UART_mode_1;
-	uc.multiBaudrate = DISABLE;
-	uc.pinmap = UART_pinmap_0;
-	uc.receiveState  = ENABLE;
+    UART_configTypeDef uc;
+    
+    uc.baudrate = 9600;                     /* baud rate is 9600bps */
+    uc.baudGenerator = UART_BGR_BRT;        /* select BRT as baud rate generator */
+    uc.baudGeneratorPrescalerState = ENABLE;
+    uc.interruptState = ENABLE;
+    uc.interruptPriority = DISABLE;
+    uc.mode = UART_mode_1;
+    uc.multiBaudrate = DISABLE;
+    uc.pinmap = UART_pinmap_0;
+    uc.receiveState  = ENABLE;
 
     UART_config(&uc);
     IAP_cmd(ENABLE);

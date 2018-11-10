@@ -22,39 +22,39 @@
 /* mark baud rate generator of UART */
 typedef enum
 {
-	UART_BGR_BRT  = 0x1,    /* independent baud rate generator */
-	UART_BGR_TIM1 = 0x0     /* timer 1 */
+    UART_BGR_BRT  = 0x1,    /* independent baud rate generator */
+    UART_BGR_TIM1 = 0x0     /* timer 1 */
 } UART_BGR;
 
 /* mark work mode */
 typedef enum
 {
-	UART_mode_0 = 0x0,  /* 8-bit shift register */
-	UART_mode_1 = 0x1,  /* 8-bit UART,variable baud rate */
-	UART_mode_2 = 0x2,  /* 9-bit UART,baud rate = (2^SMOD)/64*_SYS_CLK_ */
-	UART_mode_3 = 0x3   /* 9-bit UART,variable baud rate */
+    UART_mode_0 = 0x0,  /* 8-bit shift register */
+    UART_mode_1 = 0x1,  /* 8-bit UART,variable baud rate */
+    UART_mode_2 = 0x2,  /* 9-bit UART,baud rate = (2^SMOD)/64*_SYS_CLK_ */
+    UART_mode_3 = 0x3   /* 9-bit UART,variable baud rate */
 } UART_mode;
 
 /* mark function pin location */
 typedef enum
 {
-	UART_pinmap_0 = 0x0,     /* P30(Rx)/P31(Tx) */
-	UART_pinmap_1 = 0x1      /* P16(Rx)/P17(Tx) */
+    UART_pinmap_0 = 0x0,     /* P30(Rx)/P31(Tx) */
+    UART_pinmap_1 = 0x1      /* P16(Rx)/P17(Tx) */
 } UART_pinmap;
 
 /* mark configure struct */
 typedef struct
 {
-	uint32_t       baudrate;
-	UART_BGR       baudGenerator;
-	Action         baudGeneratorPrescalerState;
-	Action         interruptState;
-	Action         interruptPriority;
-	UART_mode      mode;
-	Action         multiBaudrate;
-	UART_pinmap    pinmap;
-	Action         receiveState;
-	
+    uint32_t       baudrate;
+    UART_BGR       baudGenerator;
+    Action         baudGeneratorPrescalerState;
+    Action         interruptState;
+    Action         interruptPriority;
+    UART_mode      mode;
+    Action         multiBaudrate;
+    UART_pinmap    pinmap;
+    Action         receiveState;
+    
 } UART_configTypeDef;
 
 /* ----- @function ----- */

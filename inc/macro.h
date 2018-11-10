@@ -22,15 +22,15 @@ typedef unsigned int  word;
 /* mark user action */
 typedef enum
 {
-	DISABLE = 0x0,
-	ENABLE  = !DISABLE
+    DISABLE = 0x0,
+    ENABLE  = !DISABLE
 } Action;
 
 /* mark bit value/state */
 typedef enum
 {
-	RESET = 0x0,
-	SET   = !RESET
+    RESET = 0x0,
+    SET   = !RESET
 } FunctionalState;
 
 /* mark model */
@@ -74,28 +74,28 @@ typedef enum
 
 /* ---------- @run-time check --------- */
 #if (_MCU_MODEL_ == _MCU_NULL_)
-	#error HML run-time check:not specify MCU model! (ERROR_CODE-0x01)
+    #error HML run-time check:not specify MCU model! (ERROR_CODE-0x01)
 #endif
 
 #ifndef _FRE_OSC_
-	#error HML run-time check:the firmware library need define extern clcok frequency! (ERROR_CODE-0x02)
+    #error HML run-time check:the firmware library need define extern clcok frequency! (ERROR_CODE-0x02)
 #endif
 
 #if (defined ___COMPILE_MEM___) && (!defined ___COMPILE_GPIO___)
-	#error HML run-time check:MEM part need extern part GPIO, please enable macro define ___COMPILE_GPIO___ (ERROR_CODE-0x03)
+    #error HML run-time check:MEM part need extern part GPIO, please enable macro define ___COMPILE_GPIO___ (ERROR_CODE-0x03)
 #endif
 
 #if (defined ___COMPILE_PWR___) && (!defined ___COMPILE_GPIO___)
-	#error HML run-time check:PWR part need sextern part GPIO, please enable macro define ___COMPILE_GPIO___ (ERROR_CODE-0x04)
+    #error HML run-time check:PWR part need sextern part GPIO, please enable macro define ___COMPILE_GPIO___ (ERROR_CODE-0x04)
 #endif
 
 #if (defined ___COMPILE_RCC___) && (!defined ___COMPILE_UTIL___)
-	#error HML run-time check:RCC part need extern part UTIL, please make sure enable them all (ERROR_CODE-0x05)
+    #error HML run-time check:RCC part need extern part UTIL, please make sure enable them all (ERROR_CODE-0x05)
 #endif
 
 #ifdef ___COMPILE_UART___
     #if (!defined ___COMPILE_RCC___) || (!defined ___COMPILE_TIM___) || (!defined ___COMPILE_UTIL___)
-	    #error HML run-time check:UART part need extern part RCC, TIM and UTIL, please make sure enable them all (ERROR_CODE-0x06)
+        #error HML run-time check:UART part need extern part RCC, TIM and UTIL, please make sure enable them all (ERROR_CODE-0x06)
     #endif
 #endif
 

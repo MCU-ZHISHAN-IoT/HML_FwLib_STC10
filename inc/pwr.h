@@ -19,9 +19,9 @@
 /* mark wakeup pins for power-down mode */
 typedef enum
 {
-	PWR_PD_IEPIN_RXD = 0x1,
-	PWR_PD_IEPIN_T0  = 0x2,
-	PWR_PD_IEPIN_T1  = 0x3
+    PWR_PD_IEPIN_RXD = 0x1,
+    PWR_PD_IEPIN_T0  = 0x2,
+    PWR_PD_IEPIN_T1  = 0x3
 } PWR_PD_IEPIN;
 
 /* ----- @function ----- */

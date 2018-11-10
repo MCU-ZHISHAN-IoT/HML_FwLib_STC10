@@ -38,8 +38,8 @@ void sys_init(void)
 /* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	while(true);
+    sys_init();
+    while(true);
 }
 
 /*

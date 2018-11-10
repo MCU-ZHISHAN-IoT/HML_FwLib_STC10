@@ -19,21 +19,21 @@
  */
 void sys_init(void)
 {
-	EXTI_configTypeDef ec;
-	
-	ec.mode = EXTI_mode_fallEdge;
-	ec.priority = DISABLE;
-	EXTI_config(PERIPH_EXTI_1,&ec);
-	EXTI_cmd(PERIPH_EXTI_1,ENABLE);
-	enableAllInterrupts();
+    EXTI_configTypeDef ec;
 
-	GPIO_setBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
+    ec.mode = EXTI_mode_fallEdge;
+    ec.priority = DISABLE;
+    EXTI_config(PERIPH_EXTI_1,&ec);
+    EXTI_cmd(PERIPH_EXTI_1,ENABLE);
+    enableAllInterrupts();
+
+    GPIO_setBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
 }
 /* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	while(true);
+    sys_init();
+    while(true);
 }
 /*
  * @Prototype:void exti1_isr(void) __interrupt IE1_VECTOR
@@ -44,5 +44,5 @@ void main(void)
 
 void exti1_isr(void) __interrupt IE1_VECTOR
 {
-	GPIO_toggleBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
+    GPIO_toggleBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
 }

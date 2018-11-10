@@ -27,49 +27,49 @@
 void sys_init(void)
 {
     EXTI_configTypeDef ec;
-	
-	ec.mode = EXTI_mode_fallEdge;
-	ec.priority = DISABLE;
-	EXTI_config(PERIPH_EXTI_0,&ec);
-	EXTI_cmd(PERIPH_EXTI_0,ENABLE);
+    
+    ec.mode = EXTI_mode_fallEdge;
+    ec.priority = DISABLE;
+    EXTI_config(PERIPH_EXTI_0,&ec);
+    EXTI_cmd(PERIPH_EXTI_0,ENABLE);
 
-	/* indicate start to work via LED */
+    /* indicate start to work via LED */
     GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
-	sleep(200);
-	GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
-	sleep(200);
-	GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_1);	
-	sleep(200);
-	GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
+    sleep(200);
+    GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
+    sleep(200);
+    GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_1);    
+    sleep(200);
+    GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
     sleep(200);
     GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
     sleep(200);
     
-	enableAllInterrupts();
-	
+    enableAllInterrupts();
+    
 }
 
 /* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	
-	while(true)
-	{
+    sys_init();
+    
+    while(true)
+    {
         sleep(200);
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
-		
-		/* check state of KEY(connected to P33) */
-		if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
-		{
-			/* avoid shake */
-			sleep(5);
-			if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
-			{
+        
+        /* check state of KEY(connected to P33) */
+        if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+        {
+            /* avoid shake */
+            sleep(5);
+            if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+            {
                 PWR_powerDown();  /* enter into power-down mode */
-			}
-		}
-	}
+            }
+        }
+    }
 }
 
 /*
@@ -79,6 +79,6 @@ void main(void)
  * @Note:interrupt handle function for EXTI0
  */
 void exti0_isr(void) __interrupt IE0_VECTOR
-{	
+{    
     /* do nothing, recover when one extern interrupt is triggered */
 }

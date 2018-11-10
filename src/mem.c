@@ -22,7 +22,7 @@
  */
 void MEM_cmd_ale(Action a)
 {
-	GPIO_P45_cmd(~a);
+    GPIO_P45_cmd(~a);
 }
 
 /*
@@ -36,7 +36,7 @@ void MEM_cmd_ale(Action a)
  */
 void MEM_cmd_internalExtendedRam(Action a)
 {
-	AUXR = (AUXR & 0xFD) | ((~a) << 0x1);
+    AUXR = (AUXR & 0xFD) | ((~a) << 0x1);
 }
 
 #endif

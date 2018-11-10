@@ -22,7 +22,7 @@ u8 df = 0x1;       /* mark current divided factor */
  */
 void RCC_BRT_cmd(Action a)
 {
-	AUXR = (AUXR & 0xEF) | (a << 0x4);
+    AUXR = (AUXR & 0xEF) | (a << 0x4);
 }
 
 /*
@@ -35,7 +35,7 @@ void RCC_BRT_cmd(Action a)
  */
 void RCC_BRT_setClockOutput(Action a)
 {
-	WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x3);
+    WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x3);
 }
 
 /*
@@ -46,7 +46,7 @@ void RCC_BRT_setClockOutput(Action a)
  */
 void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre)
 {
-	AUXR = (AUXR & 0xFB) | pre;
+    AUXR = (AUXR & 0xFB) | pre;
 }
 
 /*
@@ -57,7 +57,7 @@ void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre)
  */
 void RCC_BRT_setValue(unsigned char val)
 {
-	BRT = val;
+    BRT = val;
 }
 
 /*
@@ -68,8 +68,8 @@ void RCC_BRT_setValue(unsigned char val)
  */
 void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
 {
-	CLK_DIV = (byte)d;
-	df = pow(2,d);
+    CLK_DIV = (byte)d;
+    df = pow(2,d);
 }
 
 /*
@@ -80,7 +80,7 @@ void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
  */
 void RCC_softwareReset(void)
 {
-	IAP_CONTR = IAP_CONTR | 0x20;
+    IAP_CONTR = IAP_CONTR | 0x20;
 }
 
 /*
@@ -91,7 +91,7 @@ void RCC_softwareReset(void)
  */
 uint32_t RCC_getSystemClockFrequency(void)
 {
-	return (_FRE_OSC_/df);
+    return (_FRE_OSC_/df);
 }
 
 #endif

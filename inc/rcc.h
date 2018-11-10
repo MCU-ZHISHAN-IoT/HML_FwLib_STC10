@@ -20,21 +20,21 @@
 /* mark division factor */
 typedef enum
 {
-	CLK_divFactor_1   = 0x00,
-	CLK_divFactor_2   = 0x01,
-	CLK_divFactor_4   = 0x02,
-	CLK_divFactor_8   = 0x03,
-	CLK_divFactor_16  = 0x04,
-	CLK_divFactor_32  = 0x05,
-	CLK_divFactor_64  = 0x06,
-	CLK_divFactor_128 = 0x07
+    CLK_divFactor_1   = 0x00,
+    CLK_divFactor_2   = 0x01,
+    CLK_divFactor_4   = 0x02,
+    CLK_divFactor_8   = 0x03,
+    CLK_divFactor_16  = 0x04,
+    CLK_divFactor_32  = 0x05,
+    CLK_divFactor_64  = 0x06,
+    CLK_divFactor_128 = 0x07
 } RCC_CLK_divFactor;
 
 /* mark prescaler factor */
 typedef enum
 {
-	RCC_BRT_prescaler_1  = 0x04,  /* count per 1 clock cycle */
-	RCC_BRT_prescaler_12 = 0x00   /* count per 12 clock cycles */
+    RCC_BRT_prescaler_1  = 0x04,  /* count per 1 clock cycle */
+    RCC_BRT_prescaler_12 = 0x00   /* count per 12 clock cycles */
 } RCC_BRT_prescaler;
 
 /* ----- @function ----- */

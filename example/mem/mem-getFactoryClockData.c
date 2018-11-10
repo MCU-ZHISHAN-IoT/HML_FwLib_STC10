@@ -95,10 +95,10 @@ void main(void)
     char buffer[2];
     u8 i = 0;
 
-	sys_init();
+    sys_init();
     
-	while(true)
-	{  
+    while(true)
+    {  
         app_getFactoryClockData(accessResult);   /* get data */
         UART_sendString("Access result:");
         
@@ -111,6 +111,6 @@ void main(void)
         }
         UART_sendString("\r\n");
         
-		sleep(1000);    /* gap time */
-	}
+        sleep(1000);    /* gap time */
+    }
 }

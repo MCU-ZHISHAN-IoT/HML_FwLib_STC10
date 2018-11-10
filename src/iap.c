@@ -20,7 +20,7 @@
  */
 void IAP_cmd(Action a)
 {
-	IAP_CONTR = (IAP_CONTR & 0x7F) | (a << 0x7);
+    IAP_CONTR = (IAP_CONTR & 0x7F) | (a << 0x7);
 }
 
 /*
@@ -31,17 +31,17 @@ void IAP_cmd(Action a)
  */
 bool IAP_eraseByte(unsigned int addr)
 {
-	bool status = false;
-	if(IAP_ADDR_END < addr) return false;
-	
-	IAP_cmd(ENABLE);
-	IAP_setAddress(addr);
-	IAP_setCommand(IAP_command_erase);
-	IAP_trig();
-	sleep(1);
-	IAP_idle();
-	status = IAP_isSuccess();
-	return status;
+    bool status = false;
+    if(IAP_ADDR_END < addr) return false;
+    
+    IAP_cmd(ENABLE);
+    IAP_setAddress(addr);
+    IAP_setCommand(IAP_command_erase);
+    IAP_trig();
+    sleep(1);
+    IAP_idle();
+    status = IAP_isSuccess();
+    return status;
 }
 
 /*
@@ -52,10 +52,10 @@ bool IAP_eraseByte(unsigned int addr)
  */
 void IAP_idle(void)
 {
-	IAP_cmd(DISABLE);
-	IAP_setAddress(0x0000);
-	IAP_setCommand(IAP_command_idle);
-	IAP_DATA = 0xFF;
+    IAP_cmd(DISABLE);
+    IAP_setAddress(0x0000);
+    IAP_setCommand(IAP_command_idle);
+    IAP_DATA = 0xFF;
 }
 
 /*
@@ -82,17 +82,17 @@ bool IAP_isSuccess(void)
  */
 byte IAP_readByte(unsigned int addr)
 {
-	unsigned char dat;
-	
-	IAP_cmd(ENABLE);
-	IAP_setAddress(addr);
-	IAP_setCommand(IAP_command_read);
-	IAP_trig();
-	sleep(1);
-	dat = IAP_DATA;
-	IAP_idle();
-	
-	return dat;
+    unsigned char dat;
+    
+    IAP_cmd(ENABLE);
+    IAP_setAddress(addr);
+    IAP_setCommand(IAP_command_read);
+    IAP_trig();
+    sleep(1);
+    dat = IAP_DATA;
+    IAP_idle();
+    
+    return dat;
 }
 
 /*
@@ -103,8 +103,8 @@ byte IAP_readByte(unsigned int addr)
  */
 void IAP_setAddress(unsigned int addr)
 {
-	IAP_ADDRL = addr;
-	IAP_ADDRH = addr >> 0x8;
+    IAP_ADDRL = addr;
+    IAP_ADDRH = addr >> 0x8;
 }
 
 /*
@@ -115,7 +115,7 @@ void IAP_setAddress(unsigned int addr)
  */
 void IAP_setCommand(IAP_command cmd)
 {
-	IAP_CMD = cmd;
+    IAP_CMD = cmd;
 }
 
 /*
@@ -126,8 +126,8 @@ void IAP_setCommand(IAP_command cmd)
  */
 void IAP_trig(void)
 {
-	IAP_TRIG = 0x5A;
-	IAP_TRIG = 0xA5;
+    IAP_TRIG = 0x5A;
+    IAP_TRIG = 0xA5;
 }
 
 /*
@@ -140,22 +140,22 @@ void IAP_trig(void)
  */
 bool IAP_writeByte(unsigned int addr,byte dat)
 {
-	bool status = false;
-	
-	if(IAP_ADDR_END < addr)
+    bool status = false;
+    
+    if(IAP_ADDR_END < addr)
     {
         return false;
-	}
-	
-	IAP_cmd(ENABLE);
-	IAP_setAddress(addr);
-	IAP_setCommand(IAP_command_write);
-	IAP_DATA = dat;
-	IAP_trig();
-	sleep(1);
-	IAP_idle();
-	status = IAP_isSuccess();
-	
+    }
+    
+    IAP_cmd(ENABLE);
+    IAP_setAddress(addr);
+    IAP_setCommand(IAP_command_write);
+    IAP_DATA = dat;
+    IAP_trig();
+    sleep(1);
+    IAP_idle();
+    status = IAP_isSuccess();
+    
     return status;
 }
 

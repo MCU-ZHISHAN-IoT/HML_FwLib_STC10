@@ -20,11 +20,11 @@
  */
 void UART_cmd_mode0_multiBaudrate(Action a)
 {
-	/*
-	 * DISABLE: the baud rate is equal to classical 8051 MCU (twelve divided-frequency)
-	 * ENABLE : the baud rate is two divided-frequency
-	 */
-	AUXR = (AUXR & 0xDF) | ((unsigned char)a << 0x5);
+    /*
+     * DISABLE: the baud rate is equal to classical 8051 MCU (twelve divided-frequency)
+     * ENABLE : the baud rate is two divided-frequency
+     */
+    AUXR = (AUXR & 0xDF) | ((unsigned char)a << 0x5);
 }
 
 /*
@@ -35,7 +35,7 @@ void UART_cmd_mode0_multiBaudrate(Action a)
  */
 void UART_cmd_multiBaudrate(Action a)
 {
-	PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
+    PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
 }
 
 /*
@@ -46,7 +46,7 @@ void UART_cmd_multiBaudrate(Action a)
  */
 void UART_cmd_receive(Action a)
 {
-	REN = a;
+    REN = a;
 }
 
 /*
@@ -57,58 +57,58 @@ void UART_cmd_receive(Action a)
  */
 void UART_config(UART_configTypeDef *uc)
 {
-	TIM_configTypeDef tc;
-	unsigned int tmp = 0x0000;
-	
-	UART_cmd_receive(uc->receiveState);
-	UART_setBaudGenerator(uc->baudGenerator);
-	UART_setMode(uc->mode);
-	UART_setPin(uc->pinmap);
-	UART_INT_cmd(uc->interruptState);
-	UART_INT_setPriority(uc->interruptPriority);
+    TIM_configTypeDef tc;
+    unsigned int tmp = 0x0000;
+    
+    UART_cmd_receive(uc->receiveState);
+    UART_setBaudGenerator(uc->baudGenerator);
+    UART_setMode(uc->mode);
+    UART_setPin(uc->pinmap);
+    UART_INT_cmd(uc->interruptState);
+    UART_INT_setPriority(uc->interruptPriority);
 
-	if(uc->mode == UART_mode_0)
-	{
-		UART_cmd_mode0_multiBaudrate(uc->multiBaudrate);
-	}
-	else
-	{
-		UART_cmd_multiBaudrate(uc->multiBaudrate);
-	}
-	
-	if(uc->baudGenerator == UART_BGR_BRT)
-	{
-		UART_BRT_cmd(ENABLE);
+    if(uc->mode == UART_mode_0)
+    {
+        UART_cmd_mode0_multiBaudrate(uc->multiBaudrate);
+    }
+    else
+    {
+        UART_cmd_multiBaudrate(uc->multiBaudrate);
+    }
+    
+    if(uc->baudGenerator == UART_BGR_BRT)
+    {
+        UART_BRT_cmd(ENABLE);
         if(uc->baudGeneratorPrescalerState)
-		{
-			RCC_BRT_setPrescaler(RCC_BRT_prescaler_12);
-		}
-		else
-		{
-			RCC_BRT_setPrescaler(RCC_BRT_prescaler_1);
-		}
+        {
+            RCC_BRT_setPrescaler(RCC_BRT_prescaler_12);
+        }
+        else
+        {
+            RCC_BRT_setPrescaler(RCC_BRT_prescaler_1);
+        }
         UART_BRT_setValue(UART_getBaudGeneratorInitValue(UART_BGR_BRT,uc->baudrate));
     }
-	else
-	{
-		tc.function          = TIM_FUNC_TIM;
-		tc.interruptState    = DISABLE;
-		tc.interruptPriority = DISABLE;
-		tc.mode              = TIM_mode_2;
-		/* configure prescaler */
-		if(uc->baudGeneratorPrescalerState)
-		{
-			tc.prescaler = TIM_prescaler_12;
-		}
-		else
-		{
-			tc.prescaler = TIM_prescaler_1;
-		}
-		tc.value             = 0x00;   /* because of logic order, the value need to be reloaded one more time */
-		TIM_config(PERIPH_TIM_1,&tc);
-		TIM_cmd(PERIPH_TIM_1,ENABLE);
-		TIM_setValue(PERIPH_TIM_1,UART_getBaudGeneratorInitValue(UART_BGR_TIM1,uc->baudrate));
-	}
+    else
+    {
+        tc.function          = TIM_FUNC_TIM;
+        tc.interruptState    = DISABLE;
+        tc.interruptPriority = DISABLE;
+        tc.mode              = TIM_mode_2;
+        /* configure prescaler */
+        if(uc->baudGeneratorPrescalerState)
+        {
+            tc.prescaler = TIM_prescaler_12;
+        }
+        else
+        {
+            tc.prescaler = TIM_prescaler_1;
+        }
+        tc.value             = 0x00;   /* because of logic order, the value need to be reloaded one more time */
+        TIM_config(PERIPH_TIM_1,&tc);
+        TIM_cmd(PERIPH_TIM_1,ENABLE);
+        TIM_setValue(PERIPH_TIM_1,UART_getBaudGeneratorInitValue(UART_BGR_TIM1,uc->baudrate));
+    }
 }
 
 /*
@@ -119,51 +119,51 @@ void UART_config(UART_configTypeDef *uc)
  */
 unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud)
 {
-	/* multi baud rate */
-	unsigned char flag_pre  = 0x0;
-	unsigned char flag_smod = 0x0;
-	unsigned int  res = 0x0000;
-	
-	/* check prescaler */
-	if(gen == UART_BGR_BRT)
-	{
-		flag_pre = AUXR & 0x04;
-	}
-	else
-	{
+    /* multi baud rate */
+    unsigned char flag_pre  = 0x0;
+    unsigned char flag_smod = 0x0;
+    unsigned int  res = 0x0000;
+    
+    /* check prescaler */
+    if(gen == UART_BGR_BRT)
+    {
+        flag_pre = AUXR & 0x04;
+    }
+    else
+    {
         flag_pre = AUXR & 0x40;
-	}
-	
-	/* check multi-rate control bit */
-	if(PCON & 0x80)
-	{
-		flag_smod = 0x1;
-	}
-	
-	
-	/* calculate */
-	if(flag_pre)
-	{
-		/* check overflow */
-		if(baud < RCC_getSystemClockFrequency()/16*pow(2,flag_smod))
-		{
-			res = (unsigned char)(256 - RCC_getSystemClockFrequency()/baud/32);
-		}
-	}
-	else
-	{
-		if(baud < RCC_getSystemClockFrequency()/12/16*pow(2,flag_smod))
-		{
-			res = (unsigned char)(256 - RCC_getSystemClockFrequency()/baud/12/32*pow(2,flag_smod));
-		}
-	}
-	
-	if(gen != UART_BGR_BRT)
-	{
-		res = res & 0x00FF;
+    }
+    
+    /* check multi-rate control bit */
+    if(PCON & 0x80)
+    {
+        flag_smod = 0x1;
+    }
+    
+    
+    /* calculate */
+    if(flag_pre)
+    {
+        /* check overflow */
+        if(baud < RCC_getSystemClockFrequency()/16*pow(2,flag_smod))
+        {
+            res = (unsigned char)(256 - RCC_getSystemClockFrequency()/baud/32);
+        }
+    }
+    else
+    {
+        if(baud < RCC_getSystemClockFrequency()/12/16*pow(2,flag_smod))
+        {
+            res = (unsigned char)(256 - RCC_getSystemClockFrequency()/baud/12/32*pow(2,flag_smod));
+        }
+    }
+    
+    if(gen != UART_BGR_BRT)
+    {
+        res = res & 0x00FF;
         res = (res << 0x8) | res;
-	}
-	
+    }
+    
     return res;
 }
 
@@ -175,7 +175,7 @@ unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud)
  */
 FunctionalState UART_isReceived(void)
 {
-	return (FunctionalState)RI;
+    return (FunctionalState)RI;
 }
 
 /*
@@ -186,7 +186,7 @@ FunctionalState UART_isReceived(void)
  */
 FunctionalState UART_isTransmitted(void)
 {
-	return (FunctionalState)TI;
+    return (FunctionalState)TI;
 }
 
 /*
@@ -197,9 +197,9 @@ FunctionalState UART_isTransmitted(void)
  */
 void UART_sendByte(byte dat)
 {
-	SBUF = dat;
-	while(!TI);
-	TI = RESET;
+    SBUF = dat;
+    while(!TI);
+    TI = RESET;
 }
 
 /*
@@ -210,13 +210,13 @@ void UART_sendByte(byte dat)
  */
 void UART_sendString(char *str)
 {
-	while(*str != '\0')
-	{
-		SBUF = *str;
-		while(!TI);
-		TI = RESET;     /* clear */
-		str++;
-	}
+    while(*str != '\0')
+    {
+        SBUF = *str;
+        while(!TI);
+        TI = RESET;     /* clear */
+        str++;
+    }
 }
 
 /*
@@ -227,7 +227,7 @@ void UART_sendString(char *str)
  */
 void UART_setBaudGenerator(UART_BGR gen)
 {
-	AUXR = (AUXR & 0xFE) | (unsigned char)gen;
+    AUXR = (AUXR & 0xFE) | (unsigned char)gen;
 }
 
 /*
@@ -238,21 +238,21 @@ void UART_setBaudGenerator(UART_BGR gen)
  */
 void UART_setMode(UART_mode m)
 {
-	/*
-	 * @Extra-note:
-	 *  A.UART_mode_0 (8-bit shift register)
-	 *    When UART_M0x6 bit is 0, the baud rate is _SYS_CLK_/12. Otherwise, it's _SYS_CLK_/2
-	 *  B.UART_mode_1 (8-bit UART,variable baud rate)
-	 *    The baud rate is (2^SMOD)/32*[Overflow rate of baud rate generator]
-	 *
-	 * @How to calculate overflow rate of baud rate generator?
-	 *  >T1x12 = 0: the rate is _SYS_CLK_/12/(256-TH1)
-	 *  >T1x12 = 1: the rate is _SYS_CLK_/(256-TH1)
-	 *  >BRTx12 = 0: the rate is _SYS_CLK_/12/(256-BRT)
-	 *  >BRTx12 = 1: the rate is _SYS_CLK_/(256-BRT)
-	 */
-	
-	SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
+    /*
+     * @Extra-note:
+     *  A.UART_mode_0 (8-bit shift register)
+     *    When UART_M0x6 bit is 0, the baud rate is _SYS_CLK_/12. Otherwise, it's _SYS_CLK_/2
+     *  B.UART_mode_1 (8-bit UART,variable baud rate)
+     *    The baud rate is (2^SMOD)/32*[Overflow rate of baud rate generator]
+     *
+     * @How to calculate overflow rate of baud rate generator?
+     *  >T1x12 = 0: the rate is _SYS_CLK_/12/(256-TH1)
+     *  >T1x12 = 1: the rate is _SYS_CLK_/(256-TH1)
+     *  >BRTx12 = 0: the rate is _SYS_CLK_/12/(256-BRT)
+     *  >BRTx12 = 1: the rate is _SYS_CLK_/(256-BRT)
+     */
+    
+    SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
 }
 
 /*
@@ -263,7 +263,7 @@ void UART_setMode(UART_mode m)
  */
 void UART_setPin(UART_pinmap pm)
 {
-	AUXR1 = (AUXR1 & 0x7F) | ((unsigned char)pm << 0x7);
+    AUXR1 = (AUXR1 & 0x7F) | ((unsigned char)pm << 0x7);
 }
 
 /*
@@ -274,7 +274,7 @@ void UART_setPin(UART_pinmap pm)
  */
 void UART_BRT_cmd(Action a)
 {
-	RCC_BRT_cmd(a);
+    RCC_BRT_cmd(a);
 }
 
 /*
@@ -285,7 +285,7 @@ void UART_BRT_cmd(Action a)
  */
 void UART_BRT_setPrescaler(RCC_BRT_prescaler pre)
 {
-	RCC_BRT_setPrescaler(pre);
+    RCC_BRT_setPrescaler(pre);
 }
 
 /*
@@ -296,7 +296,7 @@ void UART_BRT_setPrescaler(RCC_BRT_prescaler pre)
  */
 void UART_BRT_setValue(unsigned char val)
 {
-	RCC_BRT_setValue(val);
+    RCC_BRT_setValue(val);
 }
 
 /*
@@ -307,7 +307,7 @@ void UART_BRT_setValue(unsigned char val)
  */
 void UART_INT_setPriority(Action a)
 {
-	PS = a;
+    PS = a;
 }
 
 /*
@@ -318,7 +318,7 @@ void UART_INT_setPriority(Action a)
  */
 void UART_INT_cmd(Action a)
 {
-	ES = a;
+    ES = a;
 }
 
 #endif

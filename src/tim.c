@@ -23,17 +23,17 @@
  */
 unsigned int TIM_calculateValue(unsigned int t,TIM_mode m,TIM_prescaler prescaler)
 {
-	/* MachineCycle:12/_FRE_OSC_ */
-	unsigned int maxTick = 0x0000;
-	switch(m)
-	{
+    /* MachineCycle:12/_FRE_OSC_ */
+    unsigned int maxTick = 0x0000;
+    switch(m)
+    {
         case TIM_mode_0:maxTick = 0x1FFF;break;
         case TIM_mode_1:maxTick = 0xFFFF;break;
         case TIM_mode_2:maxTick = 0x00FF;break;
         case TIM_mode_3:maxTick = 0x00FF;break;
-		default:break;
-	}
-	
+        default:break;
+    }
+    
     if((t*prescaler)/(_FRE_OSC_/1000000) >= maxTick )
     {
         return 0;
@@ -54,12 +54,12 @@ unsigned int TIM_calculateValue(unsigned int t,TIM_mode m,TIM_prescaler prescale
  */
 void TIM_cmd(PERIPH_TIM tim,Action a)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:TR0 = a;break;
-		case PERIPH_TIM_1:TR1 = a;break;
-		default:break;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:TR0 = a;break;
+        case PERIPH_TIM_1:TR1 = a;break;
+        default:break;
+    }
 }
 
 /*
@@ -70,12 +70,12 @@ void TIM_cmd(PERIPH_TIM tim,Action a)
  */
 void TIM_cmd_clockOutput(PERIPH_TIM tim,Action a)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:WAKE_CLKO = (WAKE_CLKO & 0xFE) | a;break;
-		case PERIPH_TIM_1:WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x1);break;
-		default:break;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:WAKE_CLKO = (WAKE_CLKO & 0xFE) | a;break;
+        case PERIPH_TIM_1:WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x1);break;
+        default:break;
+    }
 }
 
 /*
@@ -88,12 +88,12 @@ void TIM_cmd_clockOutput(PERIPH_TIM tim,Action a)
  */
 void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
 {
-	TIM_setFunction(tim,tc->function);
-	TIM_setMode(tim,tc->mode);
-	TIM_setValue(tim,tc->value);
+    TIM_setFunction(tim,tc->function);
+    TIM_setMode(tim,tc->mode);
+    TIM_setValue(tim,tc->value);
     TIM_setPrescaler(tim,tc->prescaler);
-	TIM_INT_cmd(tim,tc->interruptState);
-	TIM_INT_setPriority(tim,tc->interruptPriority);
+    TIM_INT_cmd(tim,tc->interruptState);
+    TIM_INT_setPriority(tim,tc->interruptPriority);
 }
 
 /*
@@ -104,12 +104,12 @@ void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
  */
 unsigned int TIM_getValue(PERIPH_TIM tim)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:return ((TH0 << 0x08) | TL0);
-		case PERIPH_TIM_1:return ((TH1 << 0x08) | TL1);
-		default:return 0;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:return ((TH0 << 0x08) | TL0);
+        case PERIPH_TIM_1:return ((TH1 << 0x08) | TL1);
+        default:return 0;
+    }
 }
 
 /*
@@ -120,12 +120,12 @@ unsigned int TIM_getValue(PERIPH_TIM tim)
  */
 bool TIM_isOverflow(PERIPH_TIM tim)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:return (bool)TF0;
-		case PERIPH_TIM_1:return (bool)TF1;
-		default:return false;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:return (bool)TF0;
+        case PERIPH_TIM_1:return (bool)TF1;
+        default:return false;
+    }
 }
 
 /*
@@ -138,12 +138,12 @@ bool TIM_isOverflow(PERIPH_TIM tim)
  */
 void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:TMOD = (TMOD & 0xFB) | (f << 0x02);break;
-		case PERIPH_TIM_1:TMOD = (TMOD & 0xBF) | (f << 0x06);break;
-		default:break;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:TMOD = (TMOD & 0xFB) | (f << 0x02);break;
+        case PERIPH_TIM_1:TMOD = (TMOD & 0xBF) | (f << 0x06);break;
+        default:break;
+    }
 }
 
 /*
@@ -156,12 +156,12 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
  */
 void TIM_setMode(PERIPH_TIM tim,TIM_mode m)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:TMOD = (TMOD & 0xFC) | m;break;
-		case PERIPH_TIM_1:TMOD = (TMOD & 0xCF) | (m << 0x04);break;
-		default:break;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:TMOD = (TMOD & 0xFC) | m;break;
+        case PERIPH_TIM_1:TMOD = (TMOD & 0xCF) | (m << 0x04);break;
+        default:break;
+    }
 }
 
 /*
@@ -177,24 +177,24 @@ void TIM_setPrescaler(PERIPH_TIM tim,TIM_prescaler pre)
         case PERIPH_TIM_0:
         {
             if(pre == TIM_prescaler_1)
-			{
-				AUXR = AUXR | (0x1 << 7);
-			}
+            {
+                AUXR = AUXR | (0x1 << 7);
+            }
             else
-			{
-				AUXR = AUXR & 0x7F;
-			}
+            {
+                AUXR = AUXR & 0x7F;
+            }
         } break;
         case PERIPH_TIM_1:
         {
             if(pre == TIM_prescaler_1)
-			{
-				AUXR = AUXR | 0x40;    /* 1T mode */
-			}
+            {
+                AUXR = AUXR | 0x40;    /* 1T mode */
+            }
             else
-			{
-				AUXR = AUXR & 0xBF;
-			}
+            {
+                AUXR = AUXR & 0xBF;
+            }
         } break;
         default:break;
     }
@@ -211,20 +211,20 @@ void TIM_setPrescaler(PERIPH_TIM tim,TIM_prescaler pre)
  */
 void TIM_setValue(PERIPH_TIM tim,unsigned int val)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:
-		{
-			TH0 = (u8)((val >> 0x8) & 0x00FF);
-			TL0 = (u8)(val & 0x00FF);
-		} break;
-		case PERIPH_TIM_1:
-		{
-			TH1 = (u8)((val >> 0x8) & 0x00FF);
-			TL1 = (u8)(val & 0x00FF);
-		} break;
-		default:break;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:
+        {
+            TH0 = (u8)((val >> 0x8) & 0x00FF);
+            TL0 = (u8)(val & 0x00FF);
+        } break;
+        case PERIPH_TIM_1:
+        {
+            TH1 = (u8)((val >> 0x8) & 0x00FF);
+            TL1 = (u8)(val & 0x00FF);
+        } break;
+        default:break;
+    }
 }
 
 /*
@@ -237,12 +237,12 @@ void TIM_setValue(PERIPH_TIM tim,unsigned int val)
  */
 void TIM_INT_cmd(PERIPH_TIM tim,Action a)
 {
-	switch(tim)
-	{
-		case PERIPH_TIM_0:ET0 = a;break;
-		case PERIPH_TIM_1:ET1 = a;break;
-		default:break;
-	}
+    switch(tim)
+    {
+        case PERIPH_TIM_0:ET0 = a;break;
+        case PERIPH_TIM_1:ET1 = a;break;
+        default:break;
+    }
 }
 
 /*

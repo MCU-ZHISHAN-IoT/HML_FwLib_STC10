@@ -20,41 +20,41 @@
 /* define port */
 typedef enum
 {
-	PERIPH_GPIO_0 = 0x0,
-	PERIPH_GPIO_1 = 0x1,
-	PERIPH_GPIO_2 = 0x2,
-	PERIPH_GPIO_3 = 0x3,
-	PERIPH_GPIO_4 = 0x4
+    PERIPH_GPIO_0 = 0x0,
+    PERIPH_GPIO_1 = 0x1,
+    PERIPH_GPIO_2 = 0x2,
+    PERIPH_GPIO_3 = 0x3,
+    PERIPH_GPIO_4 = 0x4
 } PERIPH_GPIO;
 
 /* define pin */
 typedef enum
 {
-	PERIPH_GPIO_PIN_0 = 0x01,
-	PERIPH_GPIO_PIN_1 = 0x02,
-	PERIPH_GPIO_PIN_2 = 0x04,
-	PERIPH_GPIO_PIN_3 = 0x08,
-	PERIPH_GPIO_PIN_4 = 0x10,
-	PERIPH_GPIO_PIN_5 = 0x20,
-	PERIPH_GPIO_PIN_6 = 0x40,
-	PERIPH_GPIO_PIN_7 = 0x80
+    PERIPH_GPIO_PIN_0 = 0x01,
+    PERIPH_GPIO_PIN_1 = 0x02,
+    PERIPH_GPIO_PIN_2 = 0x04,
+    PERIPH_GPIO_PIN_3 = 0x08,
+    PERIPH_GPIO_PIN_4 = 0x10,
+    PERIPH_GPIO_PIN_5 = 0x20,
+    PERIPH_GPIO_PIN_6 = 0x40,
+    PERIPH_GPIO_PIN_7 = 0x80
 } PERIPH_GPIO_PIN;
 
 /* mark input/output mode */
 typedef enum
 {
-	GPIO_mode_HIS = 0x2,     /* high-impedance state */
-	GPIO_mode_OD  = 0x3,     /* open drain output */
-	GPIO_mode_PP  = 0x1,     /* push-pull output */
-	GPIO_mode_QBD = 0x0      /* quasi-bidirectional(be compatible with classical 8051 MCUs) */
+    GPIO_mode_HIS = 0x2,     /* high-impedance state */
+    GPIO_mode_OD  = 0x3,     /* open drain output */
+    GPIO_mode_PP  = 0x1,     /* push-pull output */
+    GPIO_mode_QBD = 0x0      /* quasi-bidirectional(be compatible with classical 8051 MCUs) */
 } GPIO_mode;
 
 /* a struct for GPIO configuration */
 typedef struct
 {
-	FunctionalState value;
-	GPIO_mode mode;
-	PERIPH_GPIO_PIN pin;
+    FunctionalState value;
+    GPIO_mode mode;
+    PERIPH_GPIO_PIN pin;
 } GPIO_configTypeDef;
 
 /* ----- @function ----- */

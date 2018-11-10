@@ -19,19 +19,19 @@
  */
 void sys_init(void)
 {
-	UART_configTypeDef uc;
-	
-	uc.baudrate = 9600;                     /* baud rate is 9600bps */
-	uc.baudGenerator = UART_BGR_TIM1;       /* select timer-1 as baud rate generator */
-	uc.baudGeneratorPrescalerState = ENABLE;
-	uc.interruptState = ENABLE;
-	uc.interruptPriority = DISABLE;
-	uc.mode = UART_mode_1;
-	uc.multiBaudrate = DISABLE;
-	uc.pinmap = UART_pinmap_0;
-	uc.receiveState  = ENABLE;
+    UART_configTypeDef uc;
+    
+    uc.baudrate = 9600;                     /* baud rate is 9600bps */
+    uc.baudGenerator = UART_BGR_TIM1;       /* select timer-1 as baud rate generator */
+    uc.baudGeneratorPrescalerState = ENABLE;
+    uc.interruptState = ENABLE;
+    uc.interruptPriority = DISABLE;
+    uc.mode = UART_mode_1;
+    uc.multiBaudrate = DISABLE;
+    uc.pinmap = UART_pinmap_0;
+    uc.receiveState  = ENABLE;
 
-	UART_config(&uc);
+    UART_config(&uc);
     WDT_setPrescale(WDT_prescale_32);
     WDT_cmd(ENABLE);
 }
@@ -39,15 +39,15 @@ void sys_init(void)
 /* ----- @main ----- */
 void main(void)
 {
-	sys_init();
-	UART_sendString("Startup MCU...\r\n");   /* startup info */
-	
-	while(true)
-	{
-		/*feed watchdog per 500ms*/
-		sleep(500);
-		WDT_clear();
-		UART_sendString("watch dog has been fed\r\n");
-	}
+    sys_init();
+    UART_sendString("Startup MCU...\r\n");   /* startup info */
+    
+    while(true)
+    {
+        /*feed watchdog per 500ms*/
+        sleep(500);
+        WDT_clear();
+        UART_sendString("watch dog has been fed\r\n");
+    }
 }
 

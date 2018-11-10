@@ -15,12 +15,12 @@
 /* ----- @main ----- */
 void main(void)
 {
-	GPIO_resetBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
-	
-	/* blink */
-	while(true)
-	{
-		sleep(500);
-		GPIO_toggleBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
-	}	
+    GPIO_resetBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
+    
+    /* blink */
+    while(true)
+    {
+        sleep(500);
+        GPIO_toggleBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
+    }    
 }

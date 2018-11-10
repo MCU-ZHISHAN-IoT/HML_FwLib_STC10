@@ -21,7 +21,7 @@
  */
 void disableAllInterrupts(void)
 {
-	EA = RESET;
+    EA = RESET;
 }
 
 /*
@@ -32,7 +32,7 @@ void disableAllInterrupts(void)
  */
 void enableAllInterrupts(void)
 {
-	EA = SET;
+    EA = SET;
 }
 
 /*
@@ -45,21 +45,21 @@ void enableAllInterrupts(void)
  */
 unsigned int pow(unsigned char x,unsigned char y)
 {
-	u8 base = x;
-	
-	if(y == 0)
-	{
-		return 1;
-	}
-	else
-	{
-		while(--y)
-		{
-			x = x*base;
-		}
-	}
-	
-	return x;
+    u8 base = x;
+    
+    if(y == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        while(--y)
+        {
+            x = x*base;
+        }
+    }
+    
+    return x;
 }
 
 /*
@@ -70,41 +70,41 @@ unsigned int pow(unsigned char x,unsigned char y)
  */
 void sleep(u16 t)
 {
-	u8 i = 0x00;
-	u8 j = 0x00;
-	
-	#if ( _FRE_OSC_ == 11059200L )
+    u8 i = 0x00;
+    u8 j = 0x00;
+    
+    #if ( _FRE_OSC_ == 11059200L )
 
-		while(t--)
-		{
-			_nop_();
-			i = 5;
-			j = 70;
-			do
-			{
-				while (--j);
-			} while (--i);
-		}
-		
-	#elif ( _FRE_OSC_ == 12000000L )
+        while(t--)
+        {
+            _nop_();
+            i = 5;
+            j = 70;
+            do
+            {
+                while (--j);
+            } while (--i);
+        }
+        
+    #elif ( _FRE_OSC_ == 12000000L )
 
-		while(t--)
-		{
-			_nop_();
-			_nop_();
-			i =5;
-			j = 100;
-			do
-			{
-				while (--j);
-			} while (--i);
-		}
-		
-	#else
-		
-	//TODO
-	
-	#endif
+        while(t--)
+        {
+            _nop_();
+            _nop_();
+            i =5;
+            j = 100;
+            do
+            {
+                while (--j);
+            } while (--i);
+        }
+        
+    #else
+        
+    //TODO
+    
+    #endif
 }
 
 #endif
