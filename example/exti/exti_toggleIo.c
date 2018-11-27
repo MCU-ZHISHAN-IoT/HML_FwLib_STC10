@@ -39,7 +39,7 @@ void main(void)
  * @Prototype:void exti1_isr(void) __interrupt IE1_VECTOR
  * @Parameter:
  * @Ret-val:
- * @Note:interrupt function for EXTI1
+ * @Note:interrupt function for EXTI1, pin INT1 is connected to a button on board
  */
 
 void exti1_isr(void) __interrupt IE1_VECTOR

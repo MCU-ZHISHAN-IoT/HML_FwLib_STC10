@@ -10,6 +10,14 @@
  Alias   :V0R1
  Date    :2018-11-07
  Note    :The first version of HML_FwLib_STC10! It covers all on-chip resource of STC10 MCU, including extended IO, IAP, watchdog and so on!
+ 
+>Version :v0.0.1
+ Alias   :
+ Date    :
+ Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_, and modify related macro
+          (2)rename example exti.c as exti_toggleIo.c
+          (3)update Makefile
+
   
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
