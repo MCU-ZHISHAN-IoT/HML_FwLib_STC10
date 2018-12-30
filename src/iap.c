@@ -32,7 +32,11 @@ void IAP_cmd(Action a)
 bool IAP_eraseByte(unsigned int addr)
 {
     bool status = false;
-    if(IAP_ADDR_END < addr) return false;
+    
+    if(IAP_ADDR_END < addr)
+    {
+        return false;
+    }
     
     IAP_cmd(ENABLE);
     IAP_setAddress(addr);
@@ -41,6 +45,7 @@ bool IAP_eraseByte(unsigned int addr)
     sleep(1);
     IAP_idle();
     status = IAP_isSuccess();
+    
     return status;
 }
 
@@ -69,9 +74,13 @@ bool IAP_isSuccess(void)
     if((bool)((IAP_CONTR & 0x10) >> 4))
     {
         IAP_CONTR = IAP_CONTR & 0xEF;
+        
         return false;
     }
-    else return true;
+    else
+    {
+        return true;
+    }
 }
 
 /*

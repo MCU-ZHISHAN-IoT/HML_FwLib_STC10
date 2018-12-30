@@ -14,8 +14,8 @@
 /* ----- @header file ----- */
 #include <stc10.h>
 #include <stdbool.h>
-#include "util.h"
 #include "macro.h"
+#include "util.h"
 
 /* mark command of IAP */
 typedef enum
