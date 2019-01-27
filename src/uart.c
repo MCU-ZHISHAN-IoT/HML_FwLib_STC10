@@ -51,7 +51,7 @@ void UART_cmd_receive(Action a)
 
 /*
  * @Prototype:void UART_config(UART_configTypeDef *uc,PERIPH_TIM tim)
- * @Parameter:(1)uc:the pointer of configure struct (2)tim:target timer module
+ * @Parameter:(1)uc:the pointer of configure structure (2)tim:target timer module
  * @Ret-val:None
  * @Note:configure UART module
  */
@@ -61,7 +61,7 @@ void UART_config(UART_configTypeDef *uc)
     unsigned int tmp = 0x0000;
     
     UART_cmd_receive(uc->receiveState);
-    UART_setBaudGenerator(uc->baudGenerator);
+    UART_setBaudGenerator(uc->baudrateGenerator);
     UART_setMode(uc->mode);
     UART_setPin(uc->pinmap);
     UART_INT_cmd(uc->interruptState);
@@ -76,7 +76,7 @@ void UART_config(UART_configTypeDef *uc)
         UART_cmd_multiBaudrate(uc->multiBaudrate);
     }
     
-    if(uc->baudGenerator == UART_BGR_BRT)
+    if(uc->baudrateGenerator == UART_baudrateGenerator_brt)
     {
         UART_BRT_cmd(ENABLE);
         if(uc->baudGeneratorPrescalerState)
@@ -87,11 +87,11 @@ void UART_config(UART_configTypeDef *uc)
         {
             RCC_BRT_setPrescaler(RCC_BRT_prescaler_1);
         }
-        UART_BRT_setValue(UART_getBaudGeneratorInitValue(UART_BGR_BRT,uc->baudrate));
+        UART_BRT_setValue(UART_getBaudGeneratorInitValue(UART_baudrateGenerator_brt,uc->baudrate));
     }
     else
     {
-        tc.function          = TIM_FUNC_TIM;
+        tc.function          = TIM_function_tim;
         tc.interruptState    = DISABLE;
         tc.interruptPriority = DISABLE;
         tc.mode              = TIM_mode_2;
@@ -107,17 +107,17 @@ void UART_config(UART_configTypeDef *uc)
         tc.value             = 0x00;   /* because of logic order, the value need to be reloaded one more time */
         TIM_config(PERIPH_TIM_1,&tc);
         TIM_cmd(PERIPH_TIM_1,ENABLE);
-        TIM_setValue(PERIPH_TIM_1,UART_getBaudGeneratorInitValue(UART_BGR_TIM1,uc->baudrate));
+        TIM_setValue(PERIPH_TIM_1,UART_getBaudGeneratorInitValue(UART_baudrateGenerator_tim1,uc->baudrate));
     }
 }
 
 /*
- * @Prototype:unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud)
+ * @Prototype:unsigned int UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud)
  * @Parameter:(1)gen:target baud rate generator;(2)baud:expected baud rate
  * @Ret-val:(1)0x00:overflow;(2)other value:valid result
- * @Note:get 16-bit init value depend on baud rate generator
+ * @Note:get 16-bit initial value depend on baud rate generator
  */
-unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud)
+unsigned int UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud)
 {
     /* multi baud rate */
     unsigned char flag_pre  = 0x0;
@@ -125,7 +125,7 @@ unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud)
     unsigned int  res = 0x0000;
     
     /* check prescaler */
-    if(gen == UART_BGR_BRT)
+    if(gen == UART_baudrateGenerator_brt)
     {
         flag_pre = AUXR & 0x04;
     }
@@ -158,7 +158,7 @@ unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud)
         }
     }
     
-    if(gen != UART_BGR_BRT)
+    if(gen != UART_baudrateGenerator_brt)
     {
         res = res & 0x00FF;
         res = (res << 0x8) | res;
@@ -220,12 +220,12 @@ void UART_sendString(char *str)
 }
 
 /*
- * @Prototype:void UART_setBaudGenerator(UART_BGR gen)
+ * @Prototype:void UART_setBaudGenerator(UART_baudrateGenerator gen)
  * @Parameter:(1)gen:expected generator
  * @Ret-val:None
  * @Note:specify baud rate generator of UART
  */
-void UART_setBaudGenerator(UART_BGR gen)
+void UART_setBaudGenerator(UART_baudrateGenerator gen)
 {
     AUXR = (AUXR & 0xFE) | (unsigned char)gen;
 }

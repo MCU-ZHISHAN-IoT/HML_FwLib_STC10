@@ -17,6 +17,7 @@
 #include "macro.h"
 #include "util.h"
 
+/* ----- @enumeration type ----- */
 /* mark command of IAP */
 typedef enum
 {

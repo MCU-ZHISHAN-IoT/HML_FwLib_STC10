@@ -15,8 +15,10 @@
 #include <stc10.h>
 #include "macro.h"
 
+/* ----- @macro ----- */
 #define BITSEL_NA_P44 0x10
  
+/* ----- @enumeration type ----- */
 /* define port */
 typedef enum
 {
@@ -49,7 +51,8 @@ typedef enum
     GPIO_mode_QBD = 0x0      /* quasi-bidirectional(be compatible with classical 8051 MCUs) */
 } GPIO_mode;
 
-/* a struct for GPIO configuration */
+/* ----- @structure define ----- */
+/* a structure for GPIO configuration */
 typedef struct
 {
     FunctionalState value;

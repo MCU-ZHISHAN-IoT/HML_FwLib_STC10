@@ -27,7 +27,7 @@ void sys_init(void)
     UART_configTypeDef uc;
     
     uc.baudrate = 9600;                     /* baud rate is 9600bps */
-    uc.baudGenerator = UART_BGR_BRT;        /* select BRT as baud rate generator */
+    uc.baudrateGenerator = UART_baudrateGenerator_brt;     /* select BRT as baud rate generator */
     uc.baudGeneratorPrescalerState = ENABLE;
     uc.interruptState = ENABLE;
     uc.interruptPriority = DISABLE;

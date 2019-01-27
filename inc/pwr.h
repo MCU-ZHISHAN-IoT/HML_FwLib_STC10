@@ -16,6 +16,7 @@
 #include "macro.h"
 #include "gpio.h"
 
+/* ----- @enumeration type ----- */
 /* mark wakeup pins for power-down mode */
 typedef enum
 {

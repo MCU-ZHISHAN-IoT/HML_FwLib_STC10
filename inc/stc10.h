@@ -58,7 +58,7 @@ __sbit __at (0xC5) P4_5 ;
 __sbit __at (0xC6) P4_6 ;
 __sbit __at (0xC7) P4_7 ;
 
-/* Interrupt numbers */
+/* ----- @interrupt vector ----- */
 #define LVD_VECTOR 6    /* 0x33 LVD(low voltage ditect)*/
 
 #endif

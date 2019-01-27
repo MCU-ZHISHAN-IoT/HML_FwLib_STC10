@@ -23,7 +23,7 @@ void sys_init(void)
     UART_configTypeDef uc;
     
     uc.baudrate = 115200;                        /* baud rate is 115200bps */
-    uc.baudGenerator = UART_BGR_TIM1;            /* select timer-1 as baud rate generator */
+    uc.baudrateGenerator = UART_baudrateGenerator_tim1;    /* select timer-1 as baud rate generator */
     uc.baudGeneratorPrescalerState = DISABLE;    /* 1T mode */
     uc.interruptState = ENABLE;
     uc.interruptPriority = DISABLE;

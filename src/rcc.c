@@ -61,12 +61,12 @@ void RCC_BRT_setValue(unsigned char val)
 }
 
 /*
- * @Prototype:void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
+ * @Prototype:void RCC_setClockDivisionFactor(RCC_prescaler d)
  * @Parameter:(1)d:division factor
  * @Ret-val:
  * @Note:set division factor of system clock
  */
-void RCC_setClockDivisionFactor(RCC_CLK_divFactor d)
+void RCC_setClockDivisionFactor(RCC_prescaler d)
 {
     CLK_DIV = (byte)d;
     df = pow(2,d);

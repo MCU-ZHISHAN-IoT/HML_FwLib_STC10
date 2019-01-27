@@ -16,7 +16,7 @@
 /*
  * @Prototype:unsigned int TIM_calcValue(unsigned int t,TIM_mode m)
  * @Parameter:
- *  (1)t:Initial value of time (t/us)
+ *  (1)t:initial value of time (t/us)
  *  (2)m:work mode(refer to header file)
  * @Ret-val:initial value of timer counter register(if return 0x0000, it means that the time has over the limit)
  * @Note:calculate timer counter register value

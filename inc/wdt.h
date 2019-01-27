@@ -15,6 +15,7 @@
 #include <stc10.h>
 #include "macro.h"
 
+/* ----- @enumeration type ----- */
 /* mark prescale factor */
 typedef enum
 {

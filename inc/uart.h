@@ -14,17 +14,19 @@
 /* ----- @header file ----- */
 #include <stc10.h>
 #include <stdint.h>
+
 #include "macro.h"
 #include "rcc.h"
 #include "tim.h"
 #include "util.h"
 
+/* ----- @enumeration type ----- */
 /* mark baud rate generator of UART */
 typedef enum
 {
-    UART_BGR_BRT  = 0x1,    /* independent baud rate generator */
-    UART_BGR_TIM1 = 0x0     /* timer 1 */
-} UART_BGR;
+    UART_baudrateGenerator_brt  = 0x1,    /* independent baud rate generator */
+    UART_baudrateGenerator_tim1 = 0x0     /* timer 1 */
+} UART_baudrateGenerator;
 
 /* mark work mode */
 typedef enum
@@ -42,11 +44,12 @@ typedef enum
     UART_pinmap_1 = 0x1      /* P16(Rx)/P17(Tx) */
 } UART_pinmap;
 
-/* mark configure struct */
+/* ----- @structure define ----- */
+/* mark configure structure */
 typedef struct
 {
     uint32_t       baudrate;
-    UART_BGR       baudGenerator;
+    UART_baudrateGenerator baudrateGenerator;
     Action         baudGeneratorPrescalerState;
     Action         interruptState;
     Action         interruptPriority;
@@ -62,10 +65,10 @@ void UART_cmd_mode0_multiBaudrate(Action a);
 void UART_cmd_multiBaudrate(Action a);
 void UART_cmd_receive(Action a);
 void UART_config(UART_configTypeDef *uc);
-unsigned int UART_getBaudGeneratorInitValue(UART_BGR gen,uint32_t baud);
+unsigned int UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud);
 FunctionalState UART_isReceived(void);
 FunctionalState UART_isTransmitted(void);
-void UART_setBaudGenerator(UART_BGR gen);
+void UART_setBaudGenerator(UART_baudrateGenerator gen);
 void UART_setMode(UART_mode m);
 void UART_setPin(UART_pinmap pm);
 void UART_BRT_cmd(Action a);
