@@ -12,14 +12,15 @@
  Note    :The first version of HML_FwLib_STC10! It covers all on-chip resource of STC10 MCU, including extended IO, IAP, watchdog and so on!
  
 >Version :v0.0.1
- Alias   :
- Date    :
+ Alias   :V0R2
+ Date    :2019-02-04
  Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_, and modify related macro
           (2)rename example exti.c as exti_toggleIo.c
           (3)update Makefile: add new function "make help" and "make version", optimize code, rename phony target "mostlyclean" as "distclean"
           (4)adjust code style of function IAP_eraseByte and IAP_isSuccess
           (5)rename enumeration type RCC_CLK_divFactor as RCC_prescaler
           (6)rename UART_baudGenerator as UART_baudrateGenerator, rename member baudrateGenerator belong to structure UART_configTypeDef
+          (7)update Makefile to v0.1.2
   
 #TEAM
  Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
