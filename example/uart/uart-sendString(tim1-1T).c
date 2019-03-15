@@ -4,7 +4,6 @@
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a example which shows that how to send string via UART1 (baud rate generator is timer-1)
- * @Support-mcu:STC micro STC10 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC10F08XE
  * @Version:V0
@@ -22,15 +21,15 @@ void sys_init(void)
 {
     UART_configTypeDef uc;
     
-    uc.baudrate = 115200;                        /* baud rate is 115200bps */
-    uc.baudrateGenerator = UART_baudrateGenerator_tim1;    /* select timer-1 as baud rate generator */
-    uc.baudGeneratorPrescalerState = DISABLE;    /* 1T mode */
-    uc.interruptState = ENABLE;
-    uc.interruptPriority = DISABLE;
-    uc.mode = UART_mode_1;
-    uc.multiBaudrate = DISABLE;
-    uc.pinmap = UART_pinmap_0;
-    uc.receiveState  = ENABLE;
+    uc.baudrate                    = 115200;                         /* baud rate is 115200bps */
+    uc.baudrateGenerator           = UART_baudrateGenerator_tim1;    /* select timer-1 as baud rate generator */
+    uc.baudGeneratorPrescalerState = DISABLE;                        /* 1T mode */
+    uc.interruptState              = ENABLE;
+    uc.interruptPriority           = DISABLE;
+    uc.mode                        = UART_mode_1;
+    uc.multiBaudrate               = DISABLE;
+    uc.pinmap                      = UART_pinmap_0;
+    uc.receiveState                = ENABLE;
 
     UART_config(&uc);
 }

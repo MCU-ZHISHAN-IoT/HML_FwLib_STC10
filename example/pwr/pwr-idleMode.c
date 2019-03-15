@@ -4,7 +4,6 @@
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a example which shows how to enter into idle mode and recover from it.
- * @Support-mcu:STC micro STC10 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC10F08XE
  * @Version:V0
@@ -22,7 +21,7 @@ void sys_init(void)
 {
     EXTI_configTypeDef ec;
     
-    ec.mode = EXTI_mode_fallEdge;
+    ec.mode     = EXTI_mode_fallEdge;
     ec.priority = DISABLE;
     EXTI_config(PERIPH_EXTI_0,&ec);
     EXTI_cmd(PERIPH_EXTI_0,ENABLE);

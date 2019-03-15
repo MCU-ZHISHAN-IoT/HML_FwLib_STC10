@@ -4,7 +4,6 @@
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a demo which shows how to access IAP area
- * @Support-mcu:STC micro STC10 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC10F08XE
  * @Version:V0
@@ -13,8 +12,8 @@
 #include "conf.h"
 
 /* ----- @macro ----- */
-#define IAP_ADDR_TEST IAP_ADDR_START   /* mark target area */
-#define TEST_BYTE 0xBC  /* test data */
+#define IAP_ADDR_TEST IAP_ADDR_START    /* mark target area */   
+#define TEST_BYTE 0xBC    /* test data */ 
 
 /*
  * @Prototype:void sys_init(void)
@@ -26,15 +25,15 @@ void sys_init(void)
 {
     UART_configTypeDef uc;
     
-    uc.baudrate = 9600;                     /* baud rate is 9600bps */
-    uc.baudrateGenerator = UART_baudrateGenerator_brt;     /* select BRT as baud rate generator */
+    uc.baudrate                    = 9600;                           /* baud rate is 9600bps */
+    uc.baudrateGenerator           = UART_baudrateGenerator_brt;     /* select BRT as baud rate generator */
     uc.baudGeneratorPrescalerState = ENABLE;
-    uc.interruptState = ENABLE;
-    uc.interruptPriority = DISABLE;
-    uc.mode = UART_mode_1;
-    uc.multiBaudrate = DISABLE;
-    uc.pinmap = UART_pinmap_0;
-    uc.receiveState  = ENABLE;
+    uc.interruptState              = ENABLE;
+    uc.interruptPriority           = DISABLE;
+    uc.mode                        = UART_mode_1;
+    uc.multiBaudrate               = DISABLE;
+    uc.pinmap                      = UART_pinmap_0;
+    uc.receiveState                = ENABLE;
 
     UART_config(&uc);
     IAP_cmd(ENABLE);

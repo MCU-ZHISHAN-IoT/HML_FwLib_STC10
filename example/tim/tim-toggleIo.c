@@ -4,8 +4,6 @@
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a example which shows how to use HML_FwLib_STC10 to toggle P10 state per one second by TIM0 module
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC10 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC10F08XE
  * @Version:V0
@@ -23,12 +21,12 @@ void sys_init(void)
 {
     TIM_configTypeDef tc;
 
-    tc.function = TIM_function_tim;
-    tc.interruptState = ENABLE;
+    tc.function          = TIM_function_tim;
+    tc.interruptState    = ENABLE;
     tc.interruptPriority = DISABLE;
-    tc.mode = TIM_mode_1;
-    tc.prescaler = TIM_prescaler_12;
-    tc.value = 65536-50000;
+    tc.mode              = TIM_mode_1;
+    tc.prescaler         = TIM_prescaler_12;
+    tc.value             = 65536-50000;
 
     TIM_config(PERIPH_TIM_0,&tc);
     enableAllInterrupts();
@@ -43,7 +41,7 @@ void main(void)
 }
 
 /*
- * @Prototype:void tim0_isr(void) __interrupt TF0_VECTOR
+ * @Prototype:void tim0_isr(void)
  * @Parameter:
  * @Ret-val:
  * @Note:interrupt handle function for TIM0

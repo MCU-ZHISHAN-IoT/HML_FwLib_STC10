@@ -1,10 +1,9 @@
 /*
  * @Author:
- *  #Amy Chung | zhongliguo(at)zhishan-iot.tk
+ *  #Weilun Fong | wlf(at)zhishan-iot.tk
  * @Compiler:SDCC v3.6.0
  * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:a demo which shows use pin P44 as GPIO
- * @Support-mcu:STC micro STC10 series
  * @Test-board:TS51-V2.0
  * @Test-mcu:STC10F08XE
  * @Version:V0
