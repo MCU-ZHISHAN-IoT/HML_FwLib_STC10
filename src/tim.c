@@ -72,8 +72,8 @@ void TIM_cmd_clockOutput(PERIPH_TIM tim,Action a)
 {
     switch(tim)
     {
-        case PERIPH_TIM_0:WAKE_CLKO = (WAKE_CLKO & 0xFE) | a;break;
-        case PERIPH_TIM_1:WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x1);break;
+        case PERIPH_TIM_0:CONFB(WAKE_CLKO,BIT_NUM_T0CLKO,a);break;
+        case PERIPH_TIM_1:CONFB(WAKE_CLKO,BIT_NUM_T1CLKO,a);break;
         default:break;
     }
 }
@@ -140,8 +140,8 @@ void TIM_setFunction(PERIPH_TIM tim,TIM_function f)
 {
     switch(tim)
     {
-        case PERIPH_TIM_0:TMOD = (TMOD & 0xFB) | (f << 0x02);break;
-        case PERIPH_TIM_1:TMOD = (TMOD & 0xBF) | (f << 0x06);break;
+        case PERIPH_TIM_0:CONFB(TMOD,BIT_NUM_T0_CT,f);break;
+        case PERIPH_TIM_1:CONFB(TMOD,BIT_NUM_T1_CT,f);break;
         default:break;
     }
 }
@@ -178,22 +178,22 @@ void TIM_setPrescaler(PERIPH_TIM tim,TIM_prescaler pre)
         {
             if(pre == TIM_prescaler_1)
             {
-                AUXR = AUXR | (0x1 << 7);
+                SET_BIT_MASK(AUXR,T0x12);
             }
             else
             {
-                AUXR = AUXR & 0x7F;
+                CLR_BIT_MASK(AUXR,T0x12);
             }
         } break;
         case PERIPH_TIM_1:
         {
             if(pre == TIM_prescaler_1)
             {
-                AUXR = AUXR | 0x40;    /* 1T mode */
+                SET_BIT_MASK(AUXR,T1x12);   /* 1T mode */
             }
             else
             {
-                AUXR = AUXR & 0xBF;
+                CLR_BIT_MASK(AUXR,T1x12);
             }
         } break;
         default:break;

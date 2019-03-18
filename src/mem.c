@@ -15,6 +15,28 @@
 #ifdef ___COMPILE_MEM___
 
 /*
+ * @Prototype:void MEM_BUS_setAccessCycleLength(MEM_BUS_accessCycleLength len)
+ * @Parameter:(1)len: expected length
+ * @Ret-val:None
+ * @Note:configure the MOVX read/write pulse
+ */
+void MEM_BUS_setAccessCycleLength(MEM_BUS_accessCycleLength len)
+{
+    BUS_SPEED = (BUS_SPEED & 0xF7) | len;
+}
+
+/*
+ * @Prototype:void MEM_BUS_setAddressSetupTimeLength(MEM_BUS_addressSetupTimeLength len)
+ * @Parameter:(1)len: expected length
+ * @Ret-val:None
+ * @Note:configure setup time and hold time of the P0 address until negative edge on pin ALE
+ */
+void MEM_BUS_setAddressSetupTimeLength(MEM_BUS_addressSetupTimeLength len)
+{
+    BUS_SPEED = (BUS_SPEED & 0xCF) | (len << 0x4);
+}
+
+/*
  * @Prototype:void MEM_cmd_ale(Action a)
  * @Parameter:(1)a:expected state
  * @Ret-val:None
@@ -22,7 +44,7 @@
  */
 void MEM_cmd_ale(Action a)
 {
-    GPIO_P45_cmd(~a);
+    CONFB(P4SW,BIT_NUM_NA_P45,~a);
 }
 
 /*
@@ -36,7 +58,7 @@ void MEM_cmd_ale(Action a)
  */
 void MEM_cmd_internalExtendedRam(Action a)
 {
-    AUXR = (AUXR & 0xFD) | ((~a) << 0x1);
+    CONFB(AUXR,BIT_NUM_EXTRAM,~a);
 }
 
 #endif

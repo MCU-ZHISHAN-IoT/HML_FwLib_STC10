@@ -12,9 +12,8 @@
 #define ___RCC_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
 #include <stdint.h>
-
+#include "stc10.h"
 #include "macro.h"
 #include "util.h"
 
@@ -35,8 +34,8 @@ typedef enum
 /* mark prescaler factor */
 typedef enum
 {
-    RCC_BRT_prescaler_1  = 0x04,  /* count per 1 clock cycle */
-    RCC_BRT_prescaler_12 = 0x00   /* count per 12 clock cycles */
+    RCC_BRT_prescaler_1  = 0x1,   /* count per 1 clock cycle */
+    RCC_BRT_prescaler_12 = 0x0    /* count per 12 clock cycles */
 } RCC_BRT_prescaler;
 
 /* ----- @function ----- */

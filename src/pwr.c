@@ -20,7 +20,7 @@
  */
 void PWR_idle(void)
 {
-    PCON = PCON | 0x01;
+    SET_BIT_MASK(PCON,IDL);
 }
 
 /*
@@ -31,7 +31,7 @@ void PWR_idle(void)
  */
 void PWR_powerDown(void)
 {
-    PCON = PCON | 0x02;
+    SET_BIT_MASK(PCON,PD);
 }
 
 /*
@@ -42,7 +42,7 @@ void PWR_powerDown(void)
  */
 void PWR_LVD_clearFlag(void)
 {
-    PCON = PCON & 0xDF;
+    CLR_BIT_MASK(PCON,LVDF);
 }
 
 /*
@@ -53,7 +53,7 @@ void PWR_LVD_clearFlag(void)
  */
 void PWR_LVD_cmd(Action a)
 {
-    GPIO_P46_cmd(~a);
+     CONFB(P4SW,BIT_NUM_NA_P46,~a);
 }
 
 /*
@@ -64,7 +64,7 @@ void PWR_LVD_cmd(Action a)
  */
 FunctionalState PWR_LVD_getFlag(void)
 {
-    return (FunctionalState)((PCON & 0x20) >> 0x5);
+    return ((FunctionalState)GET_BIT(PCON,LVDF));
 }
 
 /*
@@ -88,9 +88,9 @@ void PWR_PD_IE_cmd(PWR_PD_IEPIN pin,Action a)
 {
     switch(pin)
     {
-        case PWR_PD_IEPIN_RXD:WAKE_CLKO = (WAKE_CLKO & 0xBF) | (a << 0x6);break;
-        case PWR_PD_IEPIN_T0 :WAKE_CLKO = (WAKE_CLKO & 0xEF) | (a << 0x4);break;
-        case PWR_PD_IEPIN_T1 :WAKE_CLKO = (WAKE_CLKO & 0xDF) | (a << 0x5);break;
+        case PWR_PD_IEPIN_RXD:CONFB(WAKE_CLKO,BIT_NUM_RD_PIN_IE,a);break;
+        case PWR_PD_IEPIN_T0 :CONFB(WAKE_CLKO,BIT_NUM_T0_PIN_IE,a);break;
+        case PWR_PD_IEPIN_T1 :CONFB(WAKE_CLKO,BIT_NUM_T1_PIN_IE,a);break;
         default:break;
     }
 }

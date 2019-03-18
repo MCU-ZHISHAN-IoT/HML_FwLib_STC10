@@ -12,9 +12,8 @@
 #define ___PWR_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
+#include "stc10.h"
 #include "macro.h"
-#include "gpio.h"
 
 /* ----- @enumeration type ----- */
 /* mark wakeup pins for power-down mode */

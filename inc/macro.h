@@ -82,10 +82,6 @@ typedef enum
     #error HML run-time check:the firmware library need define extern clcok frequency! (ERROR_CODE-0x02)
 #endif
 
-#if (defined ___COMPILE_MEM___) && (!defined ___COMPILE_GPIO___)
-    #error HML run-time check:MEM part need extern part GPIO, please enable macro define ___COMPILE_GPIO___ (ERROR_CODE-0x03)
-#endif
-
 #if (defined ___COMPILE_PWR___) && (!defined ___COMPILE_GPIO___)
     #error HML run-time check:PWR part need sextern part GPIO, please enable macro define ___COMPILE_GPIO___ (ERROR_CODE-0x04)
 #endif

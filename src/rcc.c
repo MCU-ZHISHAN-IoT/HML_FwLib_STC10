@@ -22,7 +22,7 @@ u8 df = 0x1;       /* mark current divided factor */
  */
 void RCC_BRT_cmd(Action a)
 {
-    AUXR = (AUXR & 0xEF) | (a << 0x4);
+    CONFB(AUXR,BIT_NUM_BRTR,a);
 }
 
 /*
@@ -35,7 +35,7 @@ void RCC_BRT_cmd(Action a)
  */
 void RCC_BRT_setClockOutput(Action a)
 {
-    WAKE_CLKO = (WAKE_CLKO & 0xFB) | (a << 0x3);
+    CONFB(WAKE_CLKO,BIT_NUM_BRTCLKO,a);
 }
 
 /*
@@ -46,7 +46,7 @@ void RCC_BRT_setClockOutput(Action a)
  */
 void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre)
 {
-    AUXR = (AUXR & 0xFB) | pre;
+    CONFB(AUXR,BIT_NUM_BRTx12,pre);
 }
 
 /*
@@ -80,7 +80,7 @@ void RCC_setClockDivisionFactor(RCC_prescaler d)
  */
 void RCC_softwareReset(void)
 {
-    IAP_CONTR = IAP_CONTR | 0x20;
+    SET_BIT_MASK(IAP_CONTR,SWRST);
 }
 
 /*

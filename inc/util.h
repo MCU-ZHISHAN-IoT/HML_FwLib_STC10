@@ -13,7 +13,7 @@
 #define ___UTIL_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
+#include "stc10.h"
 #include "intrasm.h"
 #include "macro.h"
 

@@ -20,7 +20,7 @@
  */
 void IAP_cmd(Action a)
 {
-    IAP_CONTR = (IAP_CONTR & 0x7F) | (a << 0x7);
+    CONFB(IAP_CONTR,BIT_NUM_IAPEN,a);
 }
 
 /*
@@ -71,10 +71,9 @@ void IAP_idle(void)
  */
 bool IAP_isSuccess(void)
 {
-    if((bool)((IAP_CONTR & 0x10) >> 4))
+    if(GET_BIT(IAP_CONTR,CMD_FAIL))
     {
-        IAP_CONTR = IAP_CONTR & 0xEF;
-        
+        CLR_BIT_MASK(IAP_CONTR,CMD_FAIL);
         return false;
     }
     else
@@ -91,7 +90,7 @@ bool IAP_isSuccess(void)
  */
 byte IAP_readByte(unsigned int addr)
 {
-    unsigned char dat;
+    byte dat = 0x00;
     
     IAP_cmd(ENABLE);
     IAP_setAddress(addr);

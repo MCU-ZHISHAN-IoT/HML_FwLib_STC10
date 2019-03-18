@@ -15,6 +15,21 @@ Please visit [detail page](https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc10
 + Open all source code on [Github](https://github.com) and licensed under the [WTPL2](http://wtfpl2.com/).
 + Readable code and provide examples to help you get started it.
 
+# What's working
+Here is a list of the all on-chip peripheral drivers and examples that need to be ported.
+
+| Peripheral | Description | Status |
+| --- | --- | --- |
+| extended bus | Intel 8080 bus receiver/transmitter | supported |
+| EXTI | extern interrupt | supported |
+| GPIO | I/O peripheral | supported  |
+| IAP | in application programming | supported |
+| PWR | power management | supported |
+| RCC | reset & clock control | supported |
+| TIM | timer | supported |
+| UART | universal asynchronous receiver/transmitter | supported |
+| WDT | watchdog | supported |
+
 ## Prerequisite
 + [GNU Make](http://www.gnu.org/software/make/manual/make.html)(recommend)
 + [SDCC compiler](http://sdcc.sourceforge.net/)

@@ -12,11 +12,8 @@
 #define ___GPIO_H___
  
 /* ----- @header file ----- */
-#include <stc10.h>
+#include "stc10.h"
 #include "macro.h"
-
-/* ----- @macro ----- */
-#define BITSEL_NA_P44 0x10
  
 /* ----- @enumeration type ----- */
 /* define port */
@@ -56,7 +53,7 @@ typedef enum
 typedef struct
 {
     FunctionalState value;
-    GPIO_mode mode;
+    GPIO_mode       mode;
     PERIPH_GPIO_PIN pin;
 } GPIO_configTypeDef;
 

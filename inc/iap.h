@@ -12,8 +12,8 @@
 #define ___IAP_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
 #include <stdbool.h>
+#include "stc10.h"
 #include "macro.h"
 #include "util.h"
 

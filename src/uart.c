@@ -24,7 +24,7 @@ void UART_cmd_mode0_multiBaudrate(Action a)
      * DISABLE: the baud rate is equal to classical 8051 MCU (twelve divided-frequency)
      * ENABLE : the baud rate is two divided-frequency
      */
-    AUXR = (AUXR & 0xDF) | ((unsigned char)a << 0x5);
+    CONFB(AUXR,BIT_NUM_UART_M0x6,a);
 }
 
 /*
@@ -35,7 +35,7 @@ void UART_cmd_mode0_multiBaudrate(Action a)
  */
 void UART_cmd_multiBaudrate(Action a)
 {
-    PCON = (PCON & 0x7F) | ((unsigned char)a << 0x7);
+    CONFB(PCON,BIT_NUM_SMOD0,a);
 }
 
 /*
@@ -127,11 +127,11 @@ unsigned int UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t 
     /* check prescaler */
     if(gen == UART_baudrateGenerator_brt)
     {
-        flag_pre = AUXR & 0x04;
+        flag_pre = GET_BIT(AUXR,BRTx12);
     }
     else
     {
-        flag_pre = AUXR & 0x40;
+        flag_pre = GET_BIT(AUXR,T1x12);
     }
     
     /* check multi-rate control bit */
@@ -227,7 +227,7 @@ void UART_sendString(char *str)
  */
 void UART_setBaudGenerator(UART_baudrateGenerator gen)
 {
-    AUXR = (AUXR & 0xFE) | (unsigned char)gen;
+    CONFB(AUXR,BIT_NUM_S1BRS,gen);
 }
 
 /*
@@ -263,7 +263,7 @@ void UART_setMode(UART_mode m)
  */
 void UART_setPin(UART_pinmap pm)
 {
-    AUXR1 = (AUXR1 & 0x7F) | ((unsigned char)pm << 0x7);
+    CONFB(AUXR1,BIT_NUM_UART_P1,pm);
 }
 
 /*

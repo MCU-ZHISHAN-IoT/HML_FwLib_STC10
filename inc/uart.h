@@ -12,9 +12,8 @@
 #define ___UART_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
 #include <stdint.h>
-
+#include "stc10.h"
 #include "macro.h"
 #include "rcc.h"
 #include "tim.h"

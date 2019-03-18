@@ -14,7 +14,7 @@
 #define ___MEM_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
+#include "stc10.h"
 #include "gpio.h"
 #include "macro.h"
 
@@ -29,7 +29,34 @@
 #define __PWORD ((unsigned int volatile __pdata *) 0)
 #define __XWORD ((unsigned int volatile __xdata *) 0)
 
+/* ----- @enumeration type ----- */
+/* mark read/write pulse length */
+typedef enum
+{
+    MEM_BUS_accessCycleLength_1T      = 0x00,         /* the MOVX read/write pulse is one clock cycle */
+    MEM_BUS_accessCycleLength_2T      = 0x01,
+    MEM_BUS_accessCycleLength_3T      = 0x02,
+    MEM_BUS_accessCycleLength_4T      = 0x03,
+    MEM_BUS_accessCycleLength_5T      = 0x04,
+    MEM_BUS_accessCycleLength_6T      = 0x05,
+    MEM_BUS_accessCycleLength_7T      = 0x06,
+    MEM_BUS_accessCycleLength_8T      = 0x07,
+    MEM_BUS_accessCycleLength_default = 0x03          /* default value is four clock cycles */
+} MEM_BUS_accessCycleLength;
+
+/* mark bus stable time */
+typedef enum
+{
+    MEM_BUS_addressSetupTimeLength_1T      = 0x00,    /* one clock cycle */
+    MEM_BUS_addressSetupTimeLength_2T      = 0x01,
+    MEM_BUS_addressSetupTimeLength_3T      = 0x02,
+    MEM_BUS_addressSetupTimeLength_4T      = 0x03,
+    MEM_BUS_addressSetupTimeLength_default = 0x02     /* default value is three clock cycles */
+} MEM_BUS_addressSetupTimeLength;
+
 /* ----- @function ----- */
+void MEM_BUS_setAccessCycleLength(MEM_BUS_accessCycleLength len);
+void MEM_BUS_setAddressSetupTimeLength(MEM_BUS_addressSetupTimeLength len);
 void MEM_cmd_ale(Action a);
 void MEM_cmd_internalExtendedRam(Action a);
 

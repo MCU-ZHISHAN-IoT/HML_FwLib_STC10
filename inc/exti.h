@@ -12,7 +12,7 @@
 #define ___EXTI_H___
 
 /* ----- @header file ----- */
-#include <stc10.h>
+#include "stc10.h"
 #include "macro.h"
 
 /* ----- @enumeration type ----- */
