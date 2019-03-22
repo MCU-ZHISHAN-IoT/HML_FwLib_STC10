@@ -1,10 +1,8 @@
 #FwLib       :HML_FwLib_STC10
-#Description :record file about HML_FwLib_STC10
+#Description :ChangeLog about HML_FwLib_STC10
 #E-mail      :mcu@zhishant-iot.tk
 #Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
 #Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc10.html
-
-#RELEASE RECORD
 
 >Version :v0.0.0
  Alias   :V0R1
@@ -22,11 +20,11 @@
           (6)rename UART_baudGenerator as UART_baudrateGenerator, rename member baudrateGenerator belong to structure UART_configTypeDef
           (7)update Makefile to v0.1.2
 
->Version :
+>Version :v0.0.2
  Alias   :
- Date    :
+ Date    :2019-03-22
  Note    :(1)fix bug of function RCC_BRT_setClockOutput
           (2)add bit operation function
           (3)update Makefile to v0.1.3: *support -j option; *add rebuild function
-          
+          (4)add bue speed configuration function, please refer to mem.h
  
