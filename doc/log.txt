@@ -29,9 +29,4 @@
           (2)add bit operation function
           (3)update Makefile to v0.1.3: *support -j option; *add rebuild function
           
-
-#TEAM
- Developer - Jiabin Hsu  (zsiothsu@zhishan-iot.tk)
- Director  - Weilun Fong (wlf@zhishan-iot.tk)
- Testing   - Amy Chung   (zhongliguo@zhishant-iot.tk)
  
