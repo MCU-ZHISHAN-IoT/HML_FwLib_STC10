@@ -32,12 +32,12 @@ void IAP_cmd(Action a)
 bool IAP_eraseByte(unsigned int addr)
 {
     bool status = false;
-    
+
     if(IAP_ADDR_END < addr)
     {
         return false;
     }
-    
+
     IAP_cmd(ENABLE);
     IAP_setAddress(addr);
     IAP_setCommand(IAP_command_erase);
@@ -45,7 +45,7 @@ bool IAP_eraseByte(unsigned int addr)
     sleep(1);
     IAP_idle();
     status = IAP_isSuccess();
-    
+
     return status;
 }
 
@@ -60,7 +60,6 @@ void IAP_idle(void)
     IAP_cmd(DISABLE);
     IAP_setAddress(0x0000);
     IAP_setCommand(IAP_command_idle);
-    IAP_DATA = 0xFF;
 }
 
 /*
@@ -96,7 +95,7 @@ byte IAP_readByte(unsigned int addr)
     IAP_setAddress(addr);
     IAP_setCommand(IAP_command_read);
     IAP_trig();
-    sleep(1);
+    _nop_();
     dat = IAP_DATA;
     IAP_idle();
     
@@ -154,16 +153,16 @@ bool IAP_writeByte(unsigned int addr,byte dat)
     {
         return false;
     }
-    
+
     IAP_cmd(ENABLE);
     IAP_setAddress(addr);
     IAP_setCommand(IAP_command_write);
     IAP_DATA = dat;
     IAP_trig();
-    sleep(1);
+    _nop_();
     IAP_idle();
     status = IAP_isSuccess();
-    
+
     return status;
 }
 

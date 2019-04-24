@@ -13,7 +13,6 @@
 
 /* ----- @macro ----- */
 #define IAP_ADDR_TEST IAP_ADDR_START    /* mark target area */   
-#define TEST_BYTE 0xBC    /* test data */ 
 
 /*
  * @Prototype:void sys_init(void)
@@ -74,29 +73,35 @@ void util_byteToHexString(byte src,char *res)
 /* ----- @main ----- */
 void main(void)
 {
-    char accessResult[3];    /* store results */
+    char accessResult[3];                             /* store results */
+    char __code test_data[3] = {0x20, 0x19, 0x04};    /* test data */
+    u8 i = 0;
 
     sys_init();
     UART_sendString("MCU boot...\r\n\0");
 
     while(true)
-    {       
-        /* write */
-        if(IAP_writeByte(IAP_ADDR_TEST,TEST_BYTE))
+    {
+        for(i = 0;i < 3;i++)
         {
-            UART_sendString("Succeeded to write test byte\r\n\0");
-        }
-        else
-        {
-            UART_sendString("Fail to write test byte\r\n\0");
-        }
+            IAP_eraseByte(IAP_ADDR_TEST+i);      /* it's necessary step */
+            /* write */
+            if(IAP_writeByte(IAP_ADDR_TEST+i,test_data[i]))
+            {
+                UART_sendString("Succeeded to write test byte\r\n\0");
+            }
+            else
+            {
+                UART_sendString("Fail to write test byte\r\n\0");
+            }
 
-        /* read and show access result */
-        util_byteToHexString(IAP_readByte(IAP_ADDR_TEST),accessResult);       
-        UART_sendString("Access result: 0x");
-        UART_sendString(accessResult);
-        UART_sendString("\r\n\0");
-
-        sleep(1000);
+            /* read and show access result */
+            util_byteToHexString(IAP_readByte(IAP_ADDR_TEST+i),accessResult);       
+            UART_sendString("Access result: 0x");
+            UART_sendString(accessResult);
+            UART_sendString("\r\n\0");
+            sleep(1000);
+        }
+        i = 0;
     }
 }
