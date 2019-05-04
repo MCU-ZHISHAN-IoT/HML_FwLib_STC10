@@ -1,7 +1,7 @@
 /*
  * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.ga
- * @E-mail:mcu(at)zhishan-iot.ga
+ *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:operations for watch dog resource
  * @Required-compiler:SDCC
  * @Support-mcu:STC micro STC10 series
@@ -38,7 +38,7 @@ void WDT_cmd(Action a)
  * @Prototype:void WDT_cmd_idleCount(Action a)
  * @Parameter:(1)a:expected action
  * @Ret-val:
- * @Note:enable or disable watch dog when idle mode
+ * @Note:enable or disable watch dog when during mode
  */
 void WDT_cmd_idleCount(Action a)
 {

@@ -2,10 +2,10 @@
  * @Author:
  *  #Jiabin Hsu  | zsiothsu(at)zhishan-iot.tk
  *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.ga
+ * @E-mail:mcu(at)zhishan-iot.tk
  * @File-description:provides some public functions
  * @Required-complier:SDCC
- * @Support-mcu:Intel MCS-51 based microprocessors
+ * @Support-mcu:STC micro STC10 series
  * @Version:V0
  */
 
