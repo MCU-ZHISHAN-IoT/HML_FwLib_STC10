@@ -32,3 +32,4 @@
  Alias   :
  Date    :
  Note    :(1)fix fatal bug of example file of IAP module
+          (2)correct bit number define of GF2 in stc11.h
