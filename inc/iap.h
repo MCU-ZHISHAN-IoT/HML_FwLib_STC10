@@ -14,7 +14,6 @@
 /* ----- @header file ----- */
 #include <stdbool.h>
 #include "stc10.h"
-#include "intrasm.h"
 #include "macro.h"
 #include "util.h"
 

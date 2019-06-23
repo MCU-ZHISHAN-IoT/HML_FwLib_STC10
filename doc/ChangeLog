@@ -35,4 +35,5 @@
           (2)correct bit number define of GF2 in stc11.h
           (3)fix fatal bug of function GPIO_configMode
           (4)move file LICENSE to root path of project
+          (5)delete abolish header file intrasm.h
 
