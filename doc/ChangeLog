@@ -37,4 +37,5 @@
           (4)move file LICENSE to root path of project
           (5)delete abolish header file intrasm.h
           (6)update stc10.h
+          (7)update Makefile to v0.2.4
 
