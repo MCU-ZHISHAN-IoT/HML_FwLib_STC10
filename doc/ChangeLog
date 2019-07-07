@@ -28,7 +28,7 @@
           (3)update Makefile to v0.1.3: *support -j option; *add rebuild function
           (4)add bus speed configuration function, please refer to mem.h
 
->Version :
+>Version :v0.1.0
  Alias   :
  Date    :
  Note    :(1)fix fatal bug of example file of IAP module
@@ -36,4 +36,5 @@
           (3)fix fatal bug of function GPIO_configMode
           (4)move file LICENSE to root path of project
           (5)delete abolish header file intrasm.h
+          (6)update stc10.h
 

@@ -370,7 +370,7 @@ void GPIO_P44_cmd(Action a)
  */
 void GPIO_P45_cmd(Action a)
 {
-    CONFB(P4SW,BIT_NUM_NA_P45,a);
+    CONFB(P4SW,BIT_NUM_ALE_P45,a);
 }
 
 /*

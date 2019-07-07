@@ -101,7 +101,7 @@ __sbit __at (0xC7) P4_7     ;
 
 /* P4SW bits */
 #define BIT_NUM_NA_P44      4
-#define BIT_NUM_NA_P45      5
+#define BIT_NUM_ALE_P45     5
 #define BIT_NUM_NA_P46      6
 
 /* PCON bits */
@@ -131,6 +131,7 @@ __sbit __at (0xC7) P4_7     ;
 #define BIT_NUM_T0_PIN_IE   4
 #define BIT_NUM_T1_PIN_IE   5
 #define BIT_NUM_RD_PIN_IE   6
+#define BIT_NUM_RxD_PIN_IE  BIT_NUM_RD_PIN_IE
 
 /* WDT_CONTR bits */
 #define BIT_NUM_PS0         0
@@ -183,7 +184,7 @@ __sbit __at (0xC7) P4_7     ;
 
 /* P4SW bits */
 #define NA_P44              BIT_MASK(BIT_NUM_NA_P44)
-#define NA_P45              BIT_MASK(BIT_NUM_NA_P45)
+#define ALE_P45             BIT_MASK(BIT_NUM_ALE_P45)
 #define NA_P46              BIT_MASK(BIT_NUM_NA_P46)
 
 /* PCON bits */
@@ -198,6 +199,7 @@ __sbit __at (0xC7) P4_7     ;
 #define T0_PIN_IE           BIT_MASK(BIT_NUM_T0_PIN_IE)
 #define T1_PIN_IE           BIT_MASK(BIT_NUM_T1_PIN_IE)
 #define RD_PIN_IE           BIT_MASK(BIT_NUM_RD_PIN_IE)
+#define RxD_PIN_IE          RD_PIN_IE
 
 /* WDT_CONTR bits */
 #define PS0                 BIT_MASK(BIT_NUM_PS0)
