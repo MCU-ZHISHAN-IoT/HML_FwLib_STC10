@@ -46,8 +46,15 @@ __sfr __at (0xC6) IAP_TRIG  ;
 __sfr __at (0xC7) IAP_CONTR ;
 
 /*  BIT Register  */
+/* P1 */
+__sbit __at (0x90) CLKOUT2  ;     /* AFIO: clock ouput pin of BRT */
+
 /* IE */
 __sbit __at (0xAE) ELVD     ;
+
+/* P3 */
+__sbit __at (0xB4) CLKOUT0  ;     /* AFIO: clock ouput pin of timer-0 */
+__sbit __at (0xB5) CLKOUT1  ;     /* AFIO: clock ouput pin of timer-1 */
 
 /* P4 */
 __sbit __at (0xC0) P4_0     ;
@@ -58,6 +65,7 @@ __sbit __at (0xC4) P4_4     ;
 __sbit __at (0xC5) P4_5     ;
 __sbit __at (0xC6) P4_6     ;
 __sbit __at (0xC7) P4_7     ;
+__sbit __at (0xC7) RST      ;     /* AFIO: a high level on this pin for at least two machine cycles will reset the MCU */
 
 /* BIT number for bits that are not directly accessible */
 /* AUXR bits */

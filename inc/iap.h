@@ -1,24 +1,58 @@
-/*
- * @Author:
- *  #Jiabin Hsu | zsiothsu(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:includes some definitions for operating IAP module
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC10 series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        iap.h
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
+ * \brief       operations for IAP module
+ * \note        
+ * \version     v0.1
+ * \ingroup     IAP
+******************************************************************************/
 
 #ifndef ___IAP_H___
 #define ___IAP_H___
 
-/* ----- @header file ----- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
 #include <stdbool.h>
-#include "stc10.h"
-#include "macro.h"
+/*****************************************************************************/
+#include "hw/stc10.h"
+/*****************************************************************************/
 #include "util.h"
 
-/* ----- @enumeration type ----- */
-/* mark command of IAP */
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
+
+/**
+ *\brief: define IAP address
+ */
+#define IAP_ADDR_START 0x0000
+
+#if (HML_MCU_MODEL == MCU_MODEL_STC10F02XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10L02XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10F04XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10L04XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10F06XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10L06XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10F08XE)   || \
+    (HML_MCU_MODEL == MCU_MODEL_STC10L08XE)
+        #define IAP_ADDR_END 0x13FF
+#elif (HML_MCU_MODEL == MCU_MODEL_STC10F10XE) || (HML_MCU_MODEL == MCU_MODEL_STC10L10XE)
+    #define IAP_ADDR_END 0x0BFF
+#elif (HML_MCU_MODEL == MCU_MODEL_STC10F12XE) || (HML_MCU_MODEL == MCU_MODEL_STC10L12XE)
+      #define IAP_ADDR_END 0x03FF
+#elif (HML_MCU_MODEL == MCU_MODEL_IAP10F14X)  || (HML_MCU_MODEL == MCU_MODEL_IAP10L14X)
+      #define IAP_ADDR_END 0x37FF
+#endif
+
+/*****************************************************************************
+ *                           enumeration type                                *
+ *****************************************************************************/
+
+/**
+ *\brief: define IAP command
+ */
 typedef enum
 {
     IAP_command_idle  = 0x0,
@@ -27,32 +61,9 @@ typedef enum
     IAP_command_erase = 0x3
 } IAP_command;
 
-/* ---------- address define --------- */
-#define IAP_ADDR_START 0x0000
-
-#if (_MCU_MODEL_ == _MCU_STC10F02XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10L02XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10F04XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10L04XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10F06XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10L06XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10F08XE_) || \
-    (_MCU_MODEL_ == _MCU_STC10L08XE_)
-    #define IAP_ADDR_END 0x13FF
-#else
-    #if (_MCU_MODEL_ == _MCU_STC10F10XE_)   || \
-        (_MCU_MODEL_ == _MCU_STC10L10XE_)
-        #define IAP_ADDR_END 0x0BFF
-    #elif (_MCU_MODEL_ == _MCU_STC10F12XE_) || \
-          (_MCU_MODEL_ == _MCU_STC10L12XE_)
-          #define IAP_ADDR_END 0x03FF
-    #elif (_MCU_MODEL_ == _MCU_IAP10F14X_)  || \
-          (_MCU_MODEL_ == _MCU_IAP10L14X_)
-          #define IAP_ADDR_END 0x37FF
-    #endif
-#endif
-
-/* ----- @function ----- */
+/*****************************************************************************
+ *                          function declare                                 *
+ *****************************************************************************/
 void IAP_cmd(Action a);
 bool IAP_eraseByte(unsigned int addr);
 void IAP_idle(void);
