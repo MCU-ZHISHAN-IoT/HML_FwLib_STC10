@@ -38,4 +38,5 @@
           (5)delete abolish header file intrasm.h
           (6)update stc10.h
           (7)update Makefile to v0.2.5
+          (8)add version.h for HML version information
 
