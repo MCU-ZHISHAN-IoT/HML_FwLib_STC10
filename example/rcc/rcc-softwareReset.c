@@ -1,26 +1,39 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a example which shows software reset via state of IO(connected to LED)
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
+/*****************************************************************************/
+/** 
+ * \file       rcc-softwareReset.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows software reset
+ * \note       
+ * \version    v0.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
+
+/**
+ *\extra-note: on-board LED group will change way of blinking when the MCU is 
+ *             going to reset
  */
 
-#include "conf.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:init MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     EXTI_configTypeDef ec;
-    
+
     ec.mode     = EXTI_mode_fallEdge;
     ec.priority = DISABLE;
     EXTI_config(PERIPH_EXTI_0,&ec);
@@ -30,7 +43,16 @@ void sys_init(void)
     enableAllInterrupts();
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     sys_init();
@@ -41,16 +63,20 @@ void main(void)
     }
 }
 
-/*
- * @Prototype:void exti0_isr(void) __interrupt IE0_VECTOR
- * @Parameter:
- * @Ret-val:
- * @Note:interrupt handle function for EXTI0
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       interrupt service function for EXTI0
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     interrupt function for EXTI0
+******************************************************************************/
 void exti0_isr(void) __interrupt IE0_VECTOR
 {    
     disableAllInterrupts();
-    
+
     /* indicate the MCU is going to reset */
     GPIO_setBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0 | PERIPH_GPIO_PIN_1 | PERIPH_GPIO_PIN_2);
     sleep(500);
@@ -60,6 +86,6 @@ void exti0_isr(void) __interrupt IE0_VECTOR
     sleep(250);
     GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
     sleep(250);
-    
+
     RCC_softwareReset();
 }

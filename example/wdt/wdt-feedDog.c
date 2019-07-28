@@ -1,26 +1,34 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a example which shows that how to use HML_FwLib_STC10 to use watchdog module
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
- */
- 
-#include "conf.h"
+/*****************************************************************************/
+/** 
+ * \file       exti-toggleIo.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example for watchdog module
+ * \note       
+ * \version    v0.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:init MCU
- */
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     UART_configTypeDef uc;
-    
+
     uc.baudrate                    = 9600;                           /* baud rate is 9600bps */
     uc.baudrateGenerator           = UART_baudrateGenerator_tim1;    /* select timer-1 as baud rate generator */
     uc.baudGeneratorPrescalerState = ENABLE;
@@ -36,12 +44,21 @@ void sys_init(void)
     WDT_cmd(ENABLE);
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     sys_init();
     UART_sendString("Startup MCU...\r\n");   /* startup info */
-    
+
     while(true)
     {
         /*feed watchdog per 500ms*/

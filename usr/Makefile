@@ -132,5 +132,7 @@ rebuild:
 .PHONY: version
 version:
 	@$(ECHO) "HmlFwlibMakefile [$(MAK_VERSION)]"
-	@$(ECHO) "General purpose Makefile for HML firmware library. This Makefile is adapted for project $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION) by Weilun Fong <wlf@zhishan-iot.tk>"
+	@$(ECHO) "General purpose Makefile for HML firmware library."
 	@$(ECHO) "Copyright(c) 2018-2019 ZHISHAN-IoT, all rights reserved."
+	@$(ECHO) ""
+	@$(ECHO) "This Makefile is adapted for project $(HML_FWLIB_NAME) $(HML_FWLIB_VERSION) by Weilun Fong <wlf@zhishan-iot.tk>"

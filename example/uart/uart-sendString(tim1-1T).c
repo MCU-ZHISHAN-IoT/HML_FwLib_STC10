@@ -1,22 +1,31 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a example which shows that how to send string via UART1 (baud rate generator is timer-1)
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file       uart-sendString(tim1-1T).c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows how to send string via UART which works on
+ *             1T mode and used timer-1 as baudrate generator
+ * \note       
+ * \version    v0.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
 
-#include "conf.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:
- * @Ret-val:
- * @Note:init MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     UART_configTypeDef uc;
@@ -34,7 +43,16 @@ void sys_init(void)
     UART_config(&uc);
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {    
     sys_init();

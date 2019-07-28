@@ -9,35 +9,53 @@
  * @Version:V0
  */
 
-/* ----- @header file ----- */
-#include "conf.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
 
-/* ----- @macro ----- */
-#define ADDR_RAM_FACTORY_RC_CLK 0xFC   /* mark address */
-
-/*
- * @Prototype:app_getFactoryClockData(byte *dat)
- * @Parameter:(1)*dat:the pointer of the area for storing data
- * @Ret-val:None
- * @Note:get factory clock data from internal RAM(address is 0xFC~0xFF)
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
+/**
+ *\brief: mark address
  */
+#define ADDR_RAM_FACTORY_RC_CLK 0xFC
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[out]  dat: pointer to the area for storing data
+ * \return      none
+ * \ingroup     example
+ * \remarks     get factory clock data from internal RAM(address is 0xFC~0xFF)
+******************************************************************************/
 void app_getFactoryClockData(byte *dat)
 {
     u8 i = 0;
 
-    /* the data is stored in a specified area, address range of the ara is from 0xFC to 0xFF in internal RAM of STC10 MCU */
+    /**
+     *\note: the data is stored in a specified area, address range of the ara is
+     *       from 0xFC to 0xFF in internal RAM of STC10 MCU
+     */
     for(i = 0;i < 4;i++)
     {
         dat[i] = __PBYTE[ADDR_RAM_FACTORY_RC_CLK + i];
     }
 }
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:init MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     UART_configTypeDef uc;
@@ -55,12 +73,17 @@ void sys_init(void)
     UART_config(&uc);
 }
 
-/*
- * @Prototype:void util_byteToHexString(byte src,char *res)
- * @Parameter:(1)src:the byte of date which is going to transfer; (2)res:a array for storing result
- * @Ret-val:None
- * @Note:transfer byte to hex string
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       transfer byte data to hex string
+ * \param[in]   src: the byte of date which is going to transfer
+ * \param[out]  res: a pinter to the area for storing result
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void util_byteToHexString(byte src,char *res)
 {
     u8 i = 2;
@@ -87,7 +110,16 @@ void util_byteToHexString(byte src,char *res)
 
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     byte accessResult[4];    /* store results */

@@ -1,25 +1,38 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a demo which shows power-down mode
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file       exti-toggleIo.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows how to toggle state of specified IO
+ * \note       
+ * \version    v0.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
 
-#include "conf.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     GPIO_resetBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
-    
+
     /* blink */
     while(true)
     {
         sleep(500);
         GPIO_toggleBitValue(PERIPH_GPIO_2,PERIPH_GPIO_PIN_0);
-    }    
+    }
 }

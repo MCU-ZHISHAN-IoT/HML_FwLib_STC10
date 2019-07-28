@@ -1,29 +1,39 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a demo which shows how to access IAP area
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file       iap-access.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows how to access IAP area
+ * \note       
+ * \version    v0.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
 
-#include "conf.h"
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
 
-/* ----- @macro ----- */
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
 #define IAP_ADDR_TEST IAP_ADDR_START    /* mark target area */   
 
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:init MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     UART_configTypeDef uc;
-    
+
     uc.baudrate                    = 9600;                           /* baud rate is 9600bps */
     uc.baudrateGenerator           = UART_baudrateGenerator_brt;     /* select BRT as baud rate generator */
     uc.baudGeneratorPrescalerState = ENABLE;
@@ -38,25 +48,30 @@ void sys_init(void)
     IAP_cmd(ENABLE);
 }
 
-/*
- * @Prototype:void util_byteToHexString(byte src,char *res)
- * @Parameter:(1)src:the byte of date which is going to transfer; (2)res:a array for storing result
- * @Ret-val:None
- * @Note:transfer byte to hex string
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       transfer byte data to hex string
+ * \param[in]   src: the byte of date which is going to transfer
+ * \param[out]  res: a pinter to the area for storing result
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void util_byteToHexString(byte src,char *res)
 {
     u8 i = 2;
     byte tmp = 0;
-    
+
     res = res + 2;
     *res = '\0';
-    
+
     while(i--)
     {
         res--;
         tmp = src % 0x10;
-        
+
         if(tmp < 10)
         {
             *res = '0' + tmp;
@@ -70,7 +85,16 @@ void util_byteToHexString(byte src,char *res)
 
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     char accessResult[3];                             /* store results */

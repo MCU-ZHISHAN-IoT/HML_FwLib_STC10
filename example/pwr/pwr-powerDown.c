@@ -1,32 +1,40 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a example which shows power-down mode and recover from it.
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
+/*****************************************************************************/
+/** 
+ * \file       exti-toggleIo.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows power-down mode and recover from it
+ * \note       
+ * \version    v0.1
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
+
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
+#include "hml.h"
+
+/**
+ *\extra-note:
+ * (1) P32/P33 are connected to key
+ * (2) user had better use IRC as clock source when run this segment of code
  */
 
-#include "conf.h"
-
-/*
- * @Extra-note:
- *  (1)P32/P33 are connected to key
- *  (2)user had better use IRC as clock source when run this segment of code
- */
-
-/*
- * @Prototype:void sys_init(void)
- * @Parameter:None
- * @Ret-val:None
- * @Note:init MCU
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       initial MCU
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void sys_init(void)
 {
     EXTI_configTypeDef ec;
-    
+
     ec.mode     = EXTI_mode_fallEdge;
     ec.priority = DISABLE;
     EXTI_config(PERIPH_EXTI_0,&ec);
@@ -37,22 +45,31 @@ void sys_init(void)
     sleep(200);
     GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
     sleep(200);
-    GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_1);    
+    GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_1);
     sleep(200);
     GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_2);
     sleep(200);
     GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
     sleep(200);
-    
+
     enableAllInterrupts();
-    
+
 }
 
-/* ----- @main ----- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       main function
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     
+******************************************************************************/
 void main(void)
 {
     sys_init();
-    
+
     while(true)
     {
         sleep(200);
@@ -71,12 +88,16 @@ void main(void)
     }
 }
 
-/*
- * @Prototype:void exti0_isr(void) __interrupt IE0_VECTOR
- * @Parameter:
- * @Ret-val:
- * @Note:interrupt handle function for EXTI0
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       interrupt service function for EXTI0
+ * \param[in]   
+ * \return      none
+ * \ingroup     example
+ * \remarks     interrupt function for EXTI0
+******************************************************************************/
 void exti0_isr(void) __interrupt IE0_VECTOR
 {    
     /* do nothing, recover when one extern interrupt is triggered */
