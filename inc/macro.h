@@ -121,19 +121,19 @@ typedef enum
         #error HML run-time check: error: unknow or unsupported MCU model!(ERROR_CODE-0x02)
     #endif
 #else
-    #error HML run-time check: error: no specified MCU model!(ERROR_CODE-0x03)
+    #error HML run-time check: error: unspecify MCU model!(ERROR_CODE-0x03)
 #endif
 
 /**
  *\brief: HML compile selection check
  */
 #if (defined __CONF_COMPILE_RCC) && (!defined __CONF_COMPILE_UTIL)
-    #error HML run-time check: error: RCC need depends on UTIL, please make sure enable them it in conf.h (ERROR_CODE-0x04)
+    #error HML run-time check: error: RCC depends on UTIL, please make sure to enable them it in conf.h (ERROR_CODE-0x04)
 #endif
 
 #ifdef __CONF_COMPILE_UART
     #if (!defined __CONF_COMPILE_RCC) || (!defined __CONF_COMPILE_TIM) || (!defined __CONF_COMPILE_UTIL)
-        #error HML run-time check: error: UART epends on RCC, TIM and UTIL, please make sure enable them all at the same time in conf.h. (ERROR_CODE-0x05)
+        #error HML run-time check: error: UART epends on RCC, TIM and UTIL, please make sure to enable them all at the same time in conf.h. (ERROR_CODE-0x05)
     #endif
 #endif
 
