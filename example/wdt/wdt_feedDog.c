@@ -63,7 +63,7 @@ void main(void)
     {
         /*feed watchdog per 500ms*/
         sleep(500);
-        WDT_clear();
+        WDT_feed();
         UART_sendString("watch dog has been fed\r\n");
     }
 }
