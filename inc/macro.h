@@ -72,9 +72,6 @@ typedef enum
 /**
  *\brief: check macro for MCU model
  */
-/**
- *\brief: check macro for MCU model
- */
 #define IS_STC10_MCU_MODEL(model)           \
     (                                       \
       (model == MCU_MODEL_GENERIC)       || \
