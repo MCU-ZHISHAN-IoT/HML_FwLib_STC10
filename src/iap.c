@@ -10,6 +10,8 @@
 
 #include "iap.h"
 
+#ifdef HAVE_IAP
+
 #ifdef __CONF_COMPILE_IAP
 
 /*****************************************************************************/
@@ -200,5 +202,7 @@ bool IAP_writeByte(unsigned int addr,byte dat)
 
     return status;
 }
+
+#endif
 
 #endif
