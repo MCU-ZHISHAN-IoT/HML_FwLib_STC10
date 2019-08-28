@@ -4,39 +4,38 @@
 #Organization:ZHISHAN-IoT(https://zhishan-iot.tk)
 #Page        :https://hw.zhishant-iot.tk/page/hml/detail/fwlib_stc10.html
 
->Version :v0.0.0
- Alias   :V0R1
- Date    :2018-11-07
- Note    :The first version of HML_FwLib_STC10! It covers all on-chip resource of STC10 MCU, including extended IO, IAP, watchdog and so on!
+>Version : v0.0.0
+ Alias   : V0R1
+ Date    : 2018-11-07
+ Note    : The first version of HML_FwLib_STC10! It covers all on-chip resource of STC10 MCU, including extended IO, IAP, watchdog and so on!
  
->Version :v0.0.1
- Alias   :V0R2
- Date    :2019-02-04
- Note    :(1)rename macro MCU_MODEL as _MCU_MODEL_, and modify related macro
-          (2)rename example exti.c as exti_toggleIo.c
-          (3)update Makefile: add new function "make help" and "make version", optimize code, rename phony target "mostlyclean" as "distclean"
-          (4)adjust code style of function IAP_eraseByte and IAP_isSuccess
-          (5)rename enumeration type RCC_CLK_divFactor as RCC_prescaler
-          (6)rename UART_baudGenerator as UART_baudrateGenerator, rename member baudrateGenerator belong to structure UART_configTypeDef
-          (7)update Makefile to v0.1.2
+>Version : v0.0.1
+ Alias   : V0R2
+ Date    : 2019-02-04
+ Note    : (1)rename macro MCU_MODEL as _MCU_MODEL_, and modify related macro
+           (2)rename example exti.c as exti_toggleIo.c
+           (3)update Makefile: add new function "make help" and "make version", optimize code, rename phony target "mostlyclean" as "distclean"
+           (4)adjust code style of function IAP_eraseByte and IAP_isSuccess
+           (5)rename enumeration type RCC_CLK_divFactor as RCC_prescaler
+           (6)rename UART_baudGenerator as UART_baudrateGenerator, rename member baudrateGenerator belong to structure UART_configTypeDef
+           (7)update Makefile to v0.1.2
 
->Version :v0.0.2
+>Version : v0.0.2
  Alias   :
- Date    :2019-03-22
- Note    :(1)fix bug of function RCC_BRT_setClockOutput
-          (2)add bit operation function
-          (3)update Makefile to v0.1.3: *support -j option; *add rebuild function
-          (4)add bus speed configuration function, please refer to mem.h
+ Date    : 2019-03-22
+ Note    : (1)fix bug of function RCC_BRT_setClockOutput
+           (2)add bit operation function
+           (3)update Makefile to v0.1.3: *support -j option; *add rebuild function
+           (4)add bus speed configuration function, please refer to mem.h
 
->Version :v0.1.0
+>Version : v0.1.0
  Alias   :
- Date    :
- Note    :(1)fix fatal bug of example file of IAP module
-          (2)correct bit number define of GF2 in stc11.h
-          (3)fix fatal bug of function GPIO_configMode
-          (4)move file LICENSE to root path of project
-          (5)delete abolish header file intrasm.h
-          (6)update stc10.h
-          (7)update Makefile to v0.2.5
-          (8)add version.h for HML version information
-
+ Date    : 2019-08-28
+ Note    : (1)fix fatal bug of example file of IAP module
+           (2)correct bit number define of GF2 in stc11.h
+           (3)fix fatal bug of function GPIO_configMode
+           (4)move file LICENSE to root path of project
+           (5)delete abolish header file intrasm.h
+           (6)update stc10.h
+           (7)update Makefile to v0.2.5
+           (8)add version.h for HML version information
