@@ -39,10 +39,10 @@ typedef enum
  */
 typedef enum
 {
-    TIM_mode_0 = 0x0,   /* 13-bit timer/counter */
-    TIM_mode_1 = 0x1,   /* 16-bit timer/counter */
-    TIM_mode_2 = 0x2,   /* 8-bit auto reload */
-    TIM_mode_3 = 0x3    /* only for timer-0 */
+    TIM_mode_0 = 0x0,        /* 13-bit timer/counter */
+    TIM_mode_1 = 0x1,        /* 16-bit timer/counter */
+    TIM_mode_2 = 0x2,        /* 8-bit auto reload */
+    TIM_mode_3 = 0x3         /* only for timer-0 */
 } TIM_mode;
 
 /**

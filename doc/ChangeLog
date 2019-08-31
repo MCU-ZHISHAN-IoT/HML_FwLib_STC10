@@ -39,3 +39,8 @@
            (6)update stc10.h
            (7)update Makefile to v0.2.5
            (8)add version.h for HML version information
+
+>Version : v0.1.1
+ Alias   :
+ Date    :
+ Note    : (1)optimize code comment

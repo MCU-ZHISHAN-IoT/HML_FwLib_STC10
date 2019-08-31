@@ -32,7 +32,7 @@ typedef enum
 } PWR_PD_IEPIN;
 
 /*****************************************************************************
- *                           enumeration type                                *
+ *                          function declare                                 *
  *****************************************************************************/
 void PWR_idle(void);
 void PWR_powerDown(void);

@@ -68,7 +68,6 @@ typedef struct
     Action         multiBaudrate;
     UART_pinmap    pinmap;
     Action         receiveState;
-    
 } UART_configTypeDef;
 
 /*****************************************************************************
