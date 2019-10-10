@@ -31,7 +31,7 @@ void PWR_idle(void)
 /** 
  * \author      Weilun Fong
  * \date        
- * \brief       enable powermode mode
+ * \brief       enable power down mode
  * \param[in]   
  * \return      none
  * \ingroup     PWR
