@@ -75,17 +75,21 @@ unsigned int pow(unsigned char x,unsigned char y)
     return x;
 }
 
-/*
- * @Prototype:void sleep(u16 t)
- * @Parameter:(1)how many ms users expected
- * @Ret-val:
- * @Note:software delay according to frequency of crystal oscillator
- */
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
+ * \brief       software delay according to MCU clock frequency
+ * \param[in]   t: how many one ms you want to delay
+ * \return      none
+ * \ingroup     UTIL
+ * \remarks     
+******************************************************************************/
 void sleep(u16 t)
 {
     u8 i = 0x00;
     u8 j = 0x00;
-    
+
     #if ( MCU_FRE_CLK == 11059200L )
 
         while(t--)
