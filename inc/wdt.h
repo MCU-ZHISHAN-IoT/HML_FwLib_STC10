@@ -1,11 +1,11 @@
 /*****************************************************************************/
 /** 
  * \file        wdt.h
- * \author      Jiabin Hsu   | zsiothsu@zhishan-iot.tk
+ * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for watchdog
  * \note        
  * \version     v0.1
- * \ingroup     TIM
+ * \ingroup     WDT
 ******************************************************************************/
 
 #ifndef ___WDT_H___

@@ -4,7 +4,7 @@
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to send string via UART which works on
- *             1T mode and used timer-1 as baudrate generator
+ *             1T mode and used timer-1 as baud rate generator
  * \note       
  * \version    v0.1
  * \ingroup    example

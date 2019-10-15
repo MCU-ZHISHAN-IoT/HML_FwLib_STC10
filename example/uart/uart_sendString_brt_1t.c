@@ -4,7 +4,7 @@
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to send string via UART which works on
- *             1T mode and used BRT as baudrate generator
+ *             1T mode and used BRT as baud rate generator
  * \note       
  * \version    v0.1
  * \ingroup    example
@@ -31,7 +31,7 @@ void sys_init(void)
     UART_configTypeDef uc;
     
     uc.baudrate                    = 115200;                        /* baud rate is 115200bps */
-    uc.baudrateGenerator           = UART_baudrateGenerator_brt;    /* select timer-1 as baud rate generator */
+    uc.baudrateGenerator           = UART_baudrateGenerator_brt;    /* select BRT as baud rate generator */
     uc.baudGeneratorPrescalerState = DISABLE;                       /* 1T mode */
     uc.interruptState              = ENABLE;
     uc.interruptPriority           = DISABLE;
