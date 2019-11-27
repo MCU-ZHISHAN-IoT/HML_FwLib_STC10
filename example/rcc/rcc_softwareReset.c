@@ -1,11 +1,11 @@
 /*****************************************************************************/
 /** 
- * \file       rcc-softwareReset.c
+ * \file       rcc_softwareReset.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows software reset
  * \note       
- * \version    v0.1
+ * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
@@ -18,7 +18,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************/
 /** 

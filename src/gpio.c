@@ -4,11 +4,11 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for GPIO module
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     GPIO
 ******************************************************************************/
 
-#include "gpio.h"
+#include "hml/gpio.h"
 
 #ifdef __CONF_COMPILE_GPIO
 
@@ -367,12 +367,12 @@ void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
 {
     switch(gpio)
     {
-        case PERIPH_GPIO_0:NOT_BIT_MASK(P0,pin);break;
-        case PERIPH_GPIO_1:NOT_BIT_MASK(P1,pin);break;
-        case PERIPH_GPIO_2:NOT_BIT_MASK(P2,pin);break;
-        case PERIPH_GPIO_3:NOT_BIT_MASK(P3,pin);break;
-        case PERIPH_GPIO_4:NOT_BIT_MASK(P4,pin);break;
-        default:break;
+        case PERIPH_GPIO_0: NOT_BIT_MASK(P0,pin); break;
+        case PERIPH_GPIO_1: NOT_BIT_MASK(P1,pin); break;
+        case PERIPH_GPIO_2: NOT_BIT_MASK(P2,pin); break;
+        case PERIPH_GPIO_3: NOT_BIT_MASK(P3,pin); break;
+        case PERIPH_GPIO_4: NOT_BIT_MASK(P4,pin); break;
+        default: break;
     }
 }
 
@@ -423,4 +423,6 @@ void GPIO_P46_cmd(Action a)
     CONFB(P4SW,BIT_NUM_NA_P46,a);
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

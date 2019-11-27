@@ -4,11 +4,11 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for IAP module
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     IAP
 ******************************************************************************/
 
-#include "iap.h"
+#include "hml/iap.h"
 
 #ifdef HAVE_IAP
 
@@ -39,7 +39,7 @@ void IAP_cmd(Action a)
  * \ingroup     IAP
  * \remarks     
 ******************************************************************************/
-bool IAP_eraseByte(unsigned int addr)
+bool IAP_eraseByte(uint16_t addr)
 {
     bool status = false;
 
@@ -109,7 +109,7 @@ bool IAP_isSuccess(void)
  * \ingroup     IAP
  * \remarks     
 ******************************************************************************/
-byte IAP_readByte(unsigned int addr)
+byte IAP_readByte(uint16_t addr)
 {
     byte dat = 0x00;
 
@@ -134,7 +134,7 @@ byte IAP_readByte(unsigned int addr)
  * \ingroup     IAP
  * \remarks     
 ******************************************************************************/
-void IAP_setAddress(unsigned int addr)
+void IAP_setAddress(uint16_t addr)
 {
     IAP_ADDRL = addr;
     IAP_ADDRH = addr >> 0x8;
@@ -182,7 +182,7 @@ void IAP_trig(void)
  * \ingroup     IAP
  * \remarks     
 ******************************************************************************/
-bool IAP_writeByte(unsigned int addr,byte dat)
+bool IAP_writeByte(uint16_t addr,byte dat)
 {
     bool status = false;
 
@@ -203,6 +203,8 @@ bool IAP_writeByte(unsigned int addr,byte dat)
     return status;
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif
 
 #endif

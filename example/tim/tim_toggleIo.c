@@ -1,12 +1,12 @@
 /*****************************************************************************/
 /** 
- * \file       tim-toggleIo.c
+ * \file       tim_toggleIo.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to toggle IO state of P10 per one second
  *             by TIM0 module
  * \note       
- * \version    v0.1
+ * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
@@ -14,7 +14,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************/
 /** 
@@ -70,7 +70,7 @@ void main(void)
 ******************************************************************************/
 void tim0_isr(void) __interrupt TF0_VECTOR
 {
-    static u8 i = 0;
+    static uint8_t i = 0;
 
     TIM_setValue(PERIPH_TIM_0,65536-50000); /* reload initial value */
     i++;

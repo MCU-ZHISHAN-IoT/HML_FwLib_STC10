@@ -1,11 +1,11 @@
 /*****************************************************************************/
 /** 
- * \file       exti-toggleIo.c
+ * \file       pwr_powerDown.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows power-down mode and recover from it
  * \note       
- * \version    v0.1
+ * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
@@ -13,7 +13,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /**
  *\extra-note:

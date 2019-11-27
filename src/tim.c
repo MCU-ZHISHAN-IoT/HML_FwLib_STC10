@@ -5,11 +5,11 @@
  * \author      Weillun Fong | wlf@zhishan-iot.tk
  * \brief       operations for timers
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     TIM
 ******************************************************************************/
 
-#include "tim.h"
+#include "hml/tim.h"
 
 #ifdef __CONF_COMPILE_TIM
 
@@ -26,7 +26,7 @@
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-unsigned int TIM_calculateValue(unsigned int t,TIM_mode m,TIM_prescaler pre)
+uint16_t TIM_calculateValue(uint16_t t,TIM_mode m,TIM_prescaler pre)
 {
     unsigned int maxTick = 0x0000;
 
@@ -119,11 +119,11 @@ void TIM_config(PERIPH_TIM tim,TIM_configTypeDef *tc)
  * \brief       get value of target timer initial value register
  * \param[in]   tim: target timer
  * \return      current value of target timer initial value register, it will 
- *              return 0 when pass a wrong patameter
+ *              return 0 when pass a wrong parameter
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-unsigned int TIM_getValue(PERIPH_TIM tim)
+uint16_t TIM_getValue(PERIPH_TIM tim)
 {
     switch(tim)
     {
@@ -248,19 +248,19 @@ void TIM_setPrescaler(PERIPH_TIM tim,TIM_prescaler pre)
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-void TIM_setValue(PERIPH_TIM tim,unsigned int val)
+void TIM_setValue(PERIPH_TIM tim,uint16_t val)
 {
     switch(tim)
     {
         case PERIPH_TIM_0:
         {
-            TH0 = (u8)((val >> 0x8) & 0x00FF);
-            TL0 = (u8)(val & 0x00FF);
+            TH0 = (byte)((val >> 0x8) & 0x00FF);
+            TL0 = (byte)(val & 0x00FF);
         } break;
         case PERIPH_TIM_1:
         {
-            TH1 = (u8)((val >> 0x8) & 0x00FF);
-            TL1 = (u8)(val & 0x00FF);
+            TH1 = (byte)((val >> 0x8) & 0x00FF);
+            TL1 = (byte)(val & 0x00FF);
         } break;
         default: break;
     }
@@ -309,4 +309,6 @@ void TIM_INT_setPriority(PERIPH_TIM tim,Action p)
     }
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

@@ -1,19 +1,19 @@
 /*****************************************************************************/
 /** 
- * \file       exti-toggleIo.c
- * \author     Weilun Fong | wlf@zhishan-iot.tk
- * \date       
- * \brief      a example which shows how to toggle IO by EXTI module
- * \note       
- * \version    v0.1
- * \ingroup    example
- * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+ * \file        exti_toggleIo.c
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \date        
+ * \brief       a example which shows how to toggle IO by EXTI module
+ * \note        
+ * \version     v0.2
+ * \ingroup     example
+ * \remarks     test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************/
 /** 

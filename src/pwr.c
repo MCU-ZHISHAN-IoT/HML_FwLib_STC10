@@ -4,11 +4,11 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for power management
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     PWR
 ******************************************************************************/
 
-#include "pwr.h"
+#include "hml/pwr.h"
 
 #ifdef __CONF_COMPILE_PWR
 
@@ -125,4 +125,6 @@ void PWR_PD_IE_cmd(PWR_PD_IEPIN pin,Action a)
     }
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

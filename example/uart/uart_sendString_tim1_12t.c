@@ -1,12 +1,12 @@
 /*****************************************************************************/
 /** 
- * \file       uart-sendString(tim1-1T).c
+ * \file       uart_sendString_tim1_12t.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to send string via UART which works on
  *             12T mode and used timer-1 as baud rate generator
  * \note       
- * \version    v0.1
+ * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
@@ -14,7 +14,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************/
 /** 

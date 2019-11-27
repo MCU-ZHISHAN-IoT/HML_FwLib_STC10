@@ -4,21 +4,17 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for IAP module
  * \note        
- * \version     v0.1
+ * \version     v0.3
  * \ingroup     IAP
 ******************************************************************************/
 
-#ifndef ___IAP_H___
-#define ___IAP_H___
+#ifndef ___HML_IAP_H___
+#define ___HML_IAP_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include <stdbool.h>
-/*****************************************************************************/
-#include "hw/stc10.h"
-/*****************************************************************************/
-#include "util.h"
+#include "hml/util.h"
 
 /*****************************************************************************
  *                                macro                                      *
@@ -65,13 +61,13 @@ typedef enum
  *                          function declare                                 *
  *****************************************************************************/
 void IAP_cmd(Action a);
-bool IAP_eraseByte(unsigned int addr);
+bool IAP_eraseByte(uint16_t addr);
 void IAP_idle(void);
 bool IAP_isSuccess(void);
-byte IAP_readByte(unsigned int addr);
-void IAP_setAddress(unsigned int addr);
+byte IAP_readByte(uint16_t addr);
+void IAP_setAddress(uint16_t addr);
 void IAP_setCommand(IAP_command cmd);
 void IAP_trig(void);
-bool IAP_writeByte(unsigned int addr,byte dat);
+bool IAP_writeByte(uint16_t addr,byte dat);
 
 #endif

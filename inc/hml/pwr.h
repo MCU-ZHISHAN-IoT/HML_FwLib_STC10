@@ -4,18 +4,19 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for power management
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     PWR
 ******************************************************************************/
  
-#ifndef ___PWR_H___
-#define ___PWR_H___
+#ifndef ___HML_PWR_H___
+#define ___HML_PWR_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hw/stc10.h"
-#include "macro.h"
+#include "hml/stc10.h"
+#include "hml/macro.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                           enumeration type                                *

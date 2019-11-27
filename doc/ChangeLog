@@ -48,4 +48,6 @@
 >Version :
  Alias   :
  Date    :
- Note    : (1)optimize header files
+ Note    : (1)optimize header files location and update examples at then same time
+           (2)fix mistakes in code comment
+           (3)add note information with process macro format for conditional compile

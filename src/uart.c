@@ -4,11 +4,11 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operations for UART
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     UART
 ******************************************************************************/
 
-#include "uart.h"
+#include "hml/uart.h"
 
 #ifdef __CONF_COMPILE_UART
 
@@ -74,7 +74,7 @@ void UART_cmd_receive(Action a)
 void UART_config(UART_configTypeDef *uc)
 {
     TIM_configTypeDef tc;
-    unsigned int tmp = 0x0000;
+    uint16_t tmp = 0x0000;
 
     UART_cmd_receive(uc->receiveState);
     UART_setBaudGenerator(uc->baudrateGenerator);
@@ -139,7 +139,7 @@ void UART_config(UART_configTypeDef *uc)
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-unsigned int UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud)
+uint16_t UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud)
 {
     /* multi baud rate */
     unsigned char flag_pre  = 0x0;
@@ -346,4 +346,6 @@ void UART_INT_setPriority(Action a)
     PS = a;
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

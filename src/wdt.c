@@ -4,11 +4,11 @@
  * \author      Jiabin Hsu | zsiothsu@zhishan-iot.tk
  * \brief       operations for watchdog
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     WDT
 ******************************************************************************/
 
-#include "wdt.h"
+#include "hml/wdt.h"
 
 #ifdef __CONF_COMPILE_WDT
 
@@ -72,4 +72,6 @@ void WDT_setPrescale(WDT_prescale pre)
     WDT_CONTR = (WDT_CONTR & 0xF8) | pre;
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

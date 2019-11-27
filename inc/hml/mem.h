@@ -3,21 +3,22 @@
  * \file        mem.h
  * \author      Weillun Fong | wlf@zhishan-iot.tk
  * \brief       operations for memory zone of MCU
- * \note        allow you to directly access the different memory areas of
- *              STC10 series MCU
- * \version     v0.1
+ * \note        allow you to directly access the different memory areas of STC10 
+ *              series MCU
+ * \version     v0.2
  * \ingroup     MEM
 ******************************************************************************/
 
 
-#ifndef ___MEM_H___
-#define ___MEM_H___
+#ifndef ___HML_MEM_H___
+#define ___HML_MEM_H___
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hw/stc10.h"
-#include "macro.h"
+#include "hml/stc10.h"
+#include "hml/macro.h"
+#include "hml/types.h"
 
 /*****************************************************************************
  *                                macro                                      *

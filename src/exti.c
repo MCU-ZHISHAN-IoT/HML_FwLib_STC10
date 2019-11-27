@@ -4,11 +4,11 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operation for on-chip EXTI module
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     EXTI
 ******************************************************************************/
 
-#include "exti.h"
+#include "hml/exti.h"
 
 #ifdef __CONF_COMPILE_EXTI
 
@@ -18,7 +18,8 @@
  * \date        
  * \brief       configure function for EXTI module
  * \param[in]   exti: target EXTI module
- * \param[in]   ec  : the pointer of configuration structure which includes all configuration information
+ * \param[in]   ec  : the pointer of configuration structure which includes all 
+ *                    configuration information
  * \return      none
  * \ingroup     EXTI
  * \remarks     
@@ -92,5 +93,6 @@ void EXTI_setPriority(PERIPH_EXTI exti,Action a)
     }
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif
-

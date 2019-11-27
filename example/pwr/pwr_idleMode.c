@@ -1,12 +1,12 @@
 /*****************************************************************************/
 /** 
- * \file       idle-idleMode.c
+ * \file       pwr_idleMode.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to enter into idle mode and recover 
  *             from it
  * \note       
- * \version    v0.1
+ * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
@@ -14,7 +14,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************/
 /** 

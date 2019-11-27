@@ -1,11 +1,11 @@
 /*****************************************************************************/
 /** 
- * \file       iap-access.c
+ * \file       iap_access.c
  * \author     Weilun Fong | wlf@zhishan-iot.tk
  * \date       
  * \brief      a example which shows how to access IAP area
  * \note       
- * \version    v0.1
+ * \version    v0.2
  * \ingroup    example
  * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
 ******************************************************************************/
@@ -13,7 +13,7 @@
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************
  *                                macro                                      *
@@ -61,7 +61,7 @@ void sys_init(void)
 ******************************************************************************/
 void util_byteToHexString(byte src,char *res)
 {
-    u8 i = 2;
+    uint8_t i = 2;
     byte tmp = 0;
 
     res = res + 2;
@@ -98,8 +98,8 @@ void util_byteToHexString(byte src,char *res)
 void main(void)
 {
     char accessResult[3];                             /* store results */
-    char __code test_data[3] = {0x20, 0x19, 0x04};    /* test data */
-    u8 i = 0;
+    byte __code test_data[3] = {0x20, 0x19, 0x04};    /* test data */
+    uint8_t i = 0;
 
     sys_init();
     UART_sendString("MCU boot...\r\n\0");

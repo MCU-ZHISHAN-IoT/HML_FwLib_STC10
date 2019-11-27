@@ -5,11 +5,11 @@
  * \brief       operations for memory zone of MCU
  * \note        allow you to directly access the different memory areas of STC10
  *              series MCU
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     MEM
 ******************************************************************************/
 
-#include "mem.h"
+#include "hml/mem.h"
 
 #ifdef __CONF_COMPILE_MEM
 
@@ -76,5 +76,6 @@ void MEM_cmd_internalExtendedRam(Action a)
     CONFB(AUXR,BIT_NUM_EXTRAM,~a);
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif
-

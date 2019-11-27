@@ -1,19 +1,25 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:STC10xx header file
- * @Required-compiler:SDCC
- * @Support-mcu:STC micro STC10 series
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file        stc10.h
+ * \author      Weilun Fong | wlf@zhishan-iot.tk
+ * \brief       STC10 register define
+ * \note        
+ * \version     v0.2
+ * \ingroup     generic
+******************************************************************************/
 
-#ifndef ___STC10_H___
-#define ___STC10_H___
+#ifndef ___HML_STC10_H___
+#define ___HML_STC10_H___
 
+/*****************************************************************************
+ *                             header file                                   *
+ *****************************************************************************/
 #include <8051.h>
-#include "bit.h"
+#include "hml/bit.h"
 
+/*****************************************************************************
+ *                            register define                                *
+ *****************************************************************************/
 /*  BYTE Register  */
 __sfr __at (0x8E) AUXR      ;
 __sfr __at (0x8F) WAKE_CLKO ;
@@ -67,6 +73,9 @@ __sbit __at (0xC6) P4_6     ;
 __sbit __at (0xC7) P4_7     ;
 __sbit __at (0xC7) RST      ;     /* AFIO: a high level on this pin for at least two machine cycles will reset the MCU */
 
+/*****************************************************************************
+ *                                macro                                      *
+ *****************************************************************************/
 /* BIT number for bits that are not directly accessible */
 /* AUXR bits */
 #define BIT_NUM_S1BRS       0

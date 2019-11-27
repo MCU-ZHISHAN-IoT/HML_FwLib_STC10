@@ -4,15 +4,15 @@
  * \author      Weilun Fong | wlf@zhishan-iot.tk
  * \brief       operation for reset and clock control
  * \note        
- * \version     v0.1
+ * \version     v0.2
  * \ingroup     RCC
 ******************************************************************************/
 
-#include "rcc.h"
+#include "hml/rcc.h"
 
 #ifdef __CONF_COMPILE_RCC
 
-u8 df = 0x1;       /* mark current divided factor */
+uint8_t df = 0x1;       /* mark current divided factor */
 
 /*****************************************************************************/
 /** 
@@ -71,7 +71,7 @@ void RCC_BRT_setPrescaler(RCC_BRT_prescaler pre)
  * \ingroup     RCC
  * \remarks     
 ******************************************************************************/
-void RCC_BRT_setValue(unsigned char val)
+void RCC_BRT_setValue(uint8_t val)
 {
     BRT = val;
 }
@@ -122,4 +122,6 @@ uint32_t RCC_getSystemClockFrequency(void)
     return (MCU_FRE_CLK/df);
 }
 
+#else
+    #warning Nothing to be done... User should remove .c file which is disabled by compile control macro from current directory.
 #endif

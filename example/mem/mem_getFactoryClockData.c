@@ -1,18 +1,20 @@
-/*
- * @Author:
- *  #Weilun Fong | wlf(at)zhishan-iot.tk
- * @Compiler:SDCC v3.6.0
- * @E-mail:mcu(at)zhishan-iot.tk
- * @File-description:a demo which shows how to get frequency of the factory RC clock from internal RAM
- * @Test-board:TS51-V2.0
- * @Test-mcu:STC10F08XE
- * @Version:V0
- */
+/*****************************************************************************/
+/** 
+ * \file       mem_getFactoryClockData.c
+ * \author     Weilun Fong | wlf@zhishan-iot.tk
+ * \date       
+ * \brief      a example which shows how to get frequency of the factory RC clock
+ *             from internal RAM
+ * \note       
+ * \version    v0.2
+ * \ingroup    example
+ * \remarks    test-board: TS51-V2.0; test-MCU: STC10F08XE
+******************************************************************************/
 
 /*****************************************************************************
  *                             header file                                   *
  *****************************************************************************/
-#include "hml.h"
+#include "hml/hml.h"
 
 /*****************************************************************************
  *                                macro                                      *
@@ -34,7 +36,7 @@
 ******************************************************************************/
 void app_getFactoryClockData(byte *dat)
 {
-    u8 i = 0;
+    uint8_t i = 0;
 
     /**
      *\note: the data is stored in a specified area, address range of the ara is
@@ -86,12 +88,12 @@ void sys_init(void)
 ******************************************************************************/
 void util_byteToHexString(byte src,char *res)
 {
-    u8 i = 2;
+    uint8_t i = 2;
     byte tmp = 0;
 
     res = res + 2;
     *res = '\0';
-    
+
     while(i--)
     {
         res--;
@@ -124,15 +126,15 @@ void main(void)
 {
     byte accessResult[4];    /* store results */
     char buffer[2];
-    u8 i = 0;
+    uint8_t i = 0;
 
     sys_init();
-    
+
     while(true)
     {  
         app_getFactoryClockData(accessResult);   /* get data */
         UART_sendString("Access result:");
-        
+
         /* show data */
         for(i= 0;i < 4;i++)
         {
@@ -141,7 +143,6 @@ void main(void)
             UART_sendString(buffer);
         }
         UART_sendString("\r\n");
-        
         sleep(1000);    /* gap time */
     }
 }
