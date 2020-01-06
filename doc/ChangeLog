@@ -45,9 +45,14 @@
  Date    : 2019-11-18
  Note    : (1)optimize code comment
 
->Version :
+>Version : v0.2.0
  Alias   :
- Date    :
+ Date    : 2019-12-19
  Note    : (1)optimize header files location and update examples at then same time
            (2)fix mistakes in code comment
            (3)add note information with process macro format for conditional compile
+
+>Version :
+ Alias   : v0.2.1
+ Date    :
+ Note    : (1)update Makefile to v0.2.6
