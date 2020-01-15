@@ -1,7 +1,8 @@
 # HML_FwLib_STC10
-[![Build Status](http://jenkins.zhishan-iot.tk:12463/buildStatus/icon?job=HML_FwLib_STC10)](http://jenkins.zhishan-iot.tk:12463/job/HML_FwLib_STC10/)
-[![License](https://img.shields.io/badge/license-WTFPL2-blue.svg)](https://wtfpl2.com/)
-[![MCU](https://img.shields.io/badge/mcu-stc10-orange.svg)](http://www.stcmcu.com/)
+[![Jenkins](https://img.shields.io/jenkins/build?jobUrl=http%3A%2F%2Fjenkins.zhishan-iot.tk%3A12463%2Fjob%2FHML_FwLib_STC10)](http://jenkins.zhishan-iot.tk:12463/job/HML_FwLib_STC10/)
+[![GitHub repo size](https://img.shields.io/github/repo-size/MCU-ZHISHAN-IoT/HML_FwLib_STC10)](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC10)
+[![GitHub](https://img.shields.io/github/license/MCU-ZHISHAN-IoT/HML_FwLib_STC90)](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC10/blob/master/LICENSE)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/MCU-ZHISHAN-IoT/HML_FwLib_STC10?color=26a69a)](https://github.com/MCU-ZHISHAN-IoT/HML_FwLib_STC10/tags)
 ## What is HML_FwLib_STC10
 HML_FwLib_STC10 is a member component of HML firmware library, **providing a group of interface functions for users to operate on-chip resource of STC10 MCUs**, including GPIO, IAP, timer, UART, external interrupt, power management and watchdog. The STC10 MCU is a kind of Intel MCS-51 based MCU which released by [STC Micro](http://www.stcmcu.com/)(*宏晶*). This series MCU have more on-chip resource and higher running speed. There is a document record difference STC10 & MCS-51 under doc directory.
 
