@@ -56,3 +56,4 @@
  Alias   : v0.2.1
  Date    :
  Note    : (1)update Makefile to v0.2.6
+           (2)refactor hml/version.h
