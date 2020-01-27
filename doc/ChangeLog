@@ -57,3 +57,4 @@
  Date    :
  Note    : (1)update Makefile to v0.2.6
            (2)refactor hml/version.h
+           (3)optimize compile select
