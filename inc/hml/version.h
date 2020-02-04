@@ -16,6 +16,11 @@
  *****************************************************************************/
 
 /**
+ *\ brief: string literal representation of the current library name
+ */
+#define __HML_NAME_STRING__ "HML_FwLib_STC10"
+
+/**
  *\ brief: string literal representation of the current library version
  */
 #define __HML_VERSION_STRING__ "0.2.1"
