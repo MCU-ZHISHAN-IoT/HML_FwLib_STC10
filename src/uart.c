@@ -91,7 +91,7 @@ void UART_config(UART_configTypeDef *uc)
     {
         UART_cmd_multiBaudrate(uc->multiBaudrate);
     }
-    
+
     if(uc->baudrateGenerator == UART_baudrateGenerator_brt)
     {
         RCC_BRT_cmd(ENABLE);
@@ -139,12 +139,12 @@ void UART_config(UART_configTypeDef *uc)
  * \ingroup     UART
  * \remarks     
 ******************************************************************************/
-uint16_t UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud)
+uint16_t UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen, uint32_t baud)
 {
     /* multi baud rate */
-    unsigned char flag_pre  = 0x0;
-    unsigned char flag_smod = 0x0;
-    unsigned int  res = 0x0000;
+    uint8_t flag_pre  = 0x0;
+    uint8_t flag_smod = 0x0;
+    uint16_t res = 0x0000;
 
     /* check prescaler */
     if(gen == UART_baudrateGenerator_brt)
@@ -168,14 +168,14 @@ uint16_t UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud
         /* check overflow */
         if(baud < RCC_getSystemClockFrequency()/16*pow(2,flag_smod))
         {
-            res = (unsigned char)(256 - RCC_getSystemClockFrequency()/baud/32);
+            res = (uint8_t)(256 - RCC_getSystemClockFrequency()/baud/32);
         }
     }
     else
     {
         if(baud < RCC_getSystemClockFrequency()/12/16*pow(2,flag_smod))
         {
-            res = (unsigned char)(256 - RCC_getSystemClockFrequency()/baud/12/32*pow(2,flag_smod));
+            res = (uint8_t)(256 - RCC_getSystemClockFrequency()/baud/12/32*pow(2,flag_smod));
         }
     }
 
@@ -186,6 +186,21 @@ uint16_t UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen,uint32_t baud
     }
 
     return res;
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        2020/02/08
+ * \brief       get result of UART receiver
+ * \param[in]   
+ * \return      value of SBUF register
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
+byte UART_getByte(void)
+{
+    return SBUF;
 }
 
 /*****************************************************************************/
@@ -233,6 +248,22 @@ void UART_sendByte(byte dat)
     SBUF = dat;
     while(!TI);
     TI = RESET;
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        2020/02/08
+ * \brief       output a hex number with character format via UART
+ * \param[in]   hex: expected hex number(range: 0x0 ~ 0xF)
+ * \return      none
+ * \ingroup     UART
+ * \remarks     
+******************************************************************************/
+void UART_sendHex(uint8_t hex)
+{
+    UART_sendByte(hexTable[hex >> 0x4]);
+    UART_sendByte(hexTable[hex & 0xF]);
 }
 
 /*****************************************************************************/
@@ -297,7 +328,7 @@ void UART_setMode(UART_mode m)
      *  >BRTx12 = 1: the rate is _SYS_CLK_/(256-BRT)
      */
     
-    SCON = (SCON & 0x3F) | ((unsigned char)m << 0x6);
+    SCON = (SCON & 0x3F) | ((uint8_t)m << 0x6);
 }
 
 /*****************************************************************************/
