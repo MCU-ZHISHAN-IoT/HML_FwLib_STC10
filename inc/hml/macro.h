@@ -35,8 +35,8 @@
 // #define MCU_MODEL_STC10F01E       0x02
 // #define MCU_MODEL_STC10F01XE      0x03
 // #define MCU_MODEL_STC10F02E       0x04
-#define MCU_MODEL_STC10F02XE      0x05
-#define MCU_MODEL_STC10L02XE      0x06
+// #define MCU_MODEL_STC10F02XE      0x05
+// #define MCU_MODEL_STC10L02XE      0x06
 #define MCU_MODEL_STC10F04        0x07
 #define MCU_MODEL_STC10L04        0x08
 // #define MCU_MODEL_STC10F04E       0x09
