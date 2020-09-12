@@ -23,7 +23,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark wakeup pins for power-down mode
+ * \brief mark wakeup pins for power-down mode
  */
 typedef enum
 {

@@ -23,7 +23,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark EXTI module
+ * \brief mark EXTI module
  */
 typedef enum
 {
@@ -32,7 +32,7 @@ typedef enum
 } PERIPH_EXTI;
 
 /**
- *\brief: mark work mode
+ * \brief mark work mode
  */
 typedef enum
 {
@@ -45,7 +45,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: configuration structure for EXTI
+ * \brief configuration structure for EXTI
  */
 typedef struct
 {

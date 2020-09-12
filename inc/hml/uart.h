@@ -26,7 +26,7 @@ static __code char hexTable[16] = { '0','1','2','3','4','5','6','7','8','9','A',
  *                           enumeration type                                *
  *****************************************************************************/
 /**
- *\brief: mark baud rate generator of UART
+ * \brief mark baud rate generator of UART
  */
 typedef enum
 {
@@ -35,7 +35,7 @@ typedef enum
 } UART_baudrateGenerator;
 
 /**
- *\brief: mark work mode
+ * \brief mark work mode
  */
 typedef enum
 {
@@ -46,7 +46,7 @@ typedef enum
 } UART_mode;
 
 /**
- *\brief: mark function pin location
+ * \brief mark function pin location
  */
 typedef enum
 {
@@ -58,7 +58,7 @@ typedef enum
  *                           structure define                                *
  *****************************************************************************/
 /**
- *\brief: mark configure structure
+ * \brief mark configure structure
  */
 typedef struct
 {

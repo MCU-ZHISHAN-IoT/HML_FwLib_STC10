@@ -23,7 +23,7 @@
  *****************************************************************************/
 
 /**
- *\brief: define port
+ * \brief define port
  */
 typedef enum
 {
@@ -35,7 +35,7 @@ typedef enum
 } PERIPH_GPIO;
 
 /**
- *\brief: define pin
+ * \brief define pin
  */
 typedef enum
 {
@@ -50,7 +50,7 @@ typedef enum
 } PERIPH_GPIO_PIN;
 
 /**
- *\brief: mark work mode
+ * \brief mark work mode
  */
 typedef enum
 {
@@ -65,7 +65,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: for GPIO configuration
+ * \brief for GPIO configuration
  */
 typedef struct
 {

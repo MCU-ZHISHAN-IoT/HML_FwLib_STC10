@@ -25,7 +25,7 @@
  *****************************************************************************/
 
 /**
- *\brief: mark timer module
+ * \brief mark timer module
  */
 typedef enum
 {
@@ -34,7 +34,7 @@ typedef enum
 } PERIPH_TIM;
 
 /**
- *\brief: mark timer work mode
+ * \brief mark timer work mode
  */
 typedef enum
 {
@@ -45,7 +45,7 @@ typedef enum
 } TIM_mode;
 
 /**
- *\brief: mark timer function
+ * \brief mark timer function
  */
 typedef enum
 {
@@ -54,7 +54,7 @@ typedef enum
 } TIM_function;
 
 /**
- *\brief: mark prescaler factor of timer
+ * \brief mark prescaler factor of timer
  */
 typedef enum
 {
@@ -67,7 +67,7 @@ typedef enum
  *****************************************************************************/
 
 /**
- *\brief: struct for timer configuration
+ * \brief struct for timer configuration
  */
 typedef struct
 {

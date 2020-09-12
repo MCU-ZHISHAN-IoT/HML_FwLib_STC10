@@ -21,13 +21,13 @@
  *****************************************************************************/
 
 /**
- *\brief: mark MCU model of STC10 series
+ * \brief mark MCU model of STC10 series
  *        - suffix 'E': with integrated EEPROM
  *        - suffix 'X': with integrated extended RAM 
  */
 
 /**
- *\note: it seems that some models are actually exist on market, but we can't
+ * \note it seems that some models are actually exist on market, but we can't
  *        find them on current datasheet and disable their model macro via code
  *        comment
  */
@@ -60,7 +60,7 @@
 #define MCU_MODEL_STC10L12XE      0x1B
 
 /**
- *\note: Following models support the function that all flash zone can be configured
+ * \note Following models support the function that all flash zone can be configured
  *       as EEPROM.
  *       In order to iron out name difference between Chinese revision datasheet and
  *       English revision, some model macro will be redirect to other macro.
@@ -71,7 +71,7 @@
 #define MCU_MODEL_STC10L14X       MCU_MODEL_IAP10L14X
 
 /**
- *\brief: check macro for MCU model
+ * \brief check macro for MCU model
  */
 #define IS_STC10_MCU_MODEL(model)           \
     (                                       \
@@ -104,7 +104,7 @@
     )
 
 /**
- *\brief: have macro for IAP function
+ * \brief have macro for IAP function
  */
 #define IS_IAP_MODEL(model)                 \
     (                                       \
@@ -125,7 +125,7 @@
     )
 
 /**
- *\brief: compile select
+ * \brief compile select
  */
 #if (__CONF_COMPILE_EXTI == 1)
     #define COMPILE_EXTI
@@ -165,7 +165,7 @@
  *                           run-time check                                  *
  *****************************************************************************/
 /**
- *\brief: MCU clock configuration check
+ * \brief MCU clock configuration check
  */
 #if (defined __CONF_FRE_CLKIN)
     #define MCU_FRE_CLK __CONF_FRE_CLKIN
@@ -174,7 +174,7 @@
 #endif
 
 /**
- *\brief: MCU model check
+ * \brief MCU model check
  */
 #if (defined __CONF_MCU_MODEL)
     #if IS_STC10_MCU_MODEL(__CONF_MCU_MODEL)
@@ -196,7 +196,7 @@
 #endif
 
 /**
- *\brief: HML compile selection check
+ * \brief HML compile selection check
  */
 #ifndef HAVE_IAP
     #ifdef COMPILE_IAP
@@ -215,7 +215,7 @@
 #endif
 
 /**
- *\brief: SDCC version check
+ * \brief SDCC version check
  */
 #if (__SDCC_VERSION_MAJOR == 3)
     #if (__SDCC_VERSION_MINOR < 6)

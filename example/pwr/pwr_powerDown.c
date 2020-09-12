@@ -16,7 +16,7 @@
 #include "hml/hml.h"
 
 /**
- *\extra-note:
+ * \note
  * (1) P32/P33 are connected to key
  * (2) user had better use IRC as clock source when run this segment of code
  */
@@ -74,7 +74,7 @@ void main(void)
     {
         sleep(200);
         GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
-        
+
         /* check state of KEY(connected to P33) */
         if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
         {
@@ -100,5 +100,5 @@ void main(void)
 ******************************************************************************/
 void exti0_isr(void) __interrupt IE0_VECTOR
 {    
-    /* do nothing, recover when one extern interrupt is triggered */
+    /* do nothing, recover when extern interrupt is triggered */
 }

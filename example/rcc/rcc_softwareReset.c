@@ -11,8 +11,8 @@
 ******************************************************************************/
 
 /**
- *\extra-note: on-board LED group will change way of blinking when the MCU is 
- *             going to reset
+ * \note on-board LED group will change way of blinking when the MCU is 
+ *       going to reset
  */
 
 /*****************************************************************************

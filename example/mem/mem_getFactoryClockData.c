@@ -39,7 +39,7 @@ void app_getFactoryClockData(byte *dat)
     uint8_t i = 0;
 
     /**
-     *\note: the data is stored in a specified area, address range of the ara is
+     * \note the data is stored in a specified area, address range of the ara is
      *       from 0xFC to 0xFF in internal RAM of STC10 MCU
      */
     for(i = 0;i < 4;i++)
@@ -89,7 +89,7 @@ void sys_init(void)
 void util_byteToHexString(byte src,char *res)
 {
     uint8_t i = 2;
-    byte tmp = 0;
+    byte tmp  = 0x00;
 
     res = res + 2;
     *res = '\0';

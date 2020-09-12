@@ -21,7 +21,7 @@
  *****************************************************************************/
 
 /**
- *\brief: define IAP address
+ * \brief define IAP address
  */
 #define IAP_ADDR_START 0x0000
 
@@ -47,7 +47,7 @@
  *****************************************************************************/
 
 /**
- *\brief: define IAP command
+ * \brief define IAP command
  */
 typedef enum
 {
