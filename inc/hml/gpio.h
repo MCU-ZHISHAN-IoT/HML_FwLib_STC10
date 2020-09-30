@@ -54,7 +54,7 @@ typedef enum
  */
 typedef enum
 {
-    GPIO_mode_HIS = 0x2,     /* high-impedance state */
+    GPIO_mode_HIS = 0x2,     /* high-impedance state, only input */
     GPIO_mode_OD  = 0x3,     /* open drain output */
     GPIO_mode_PP  = 0x1,     /* push-pull output */
     GPIO_mode_QBD = 0x0      /* quasi-bidirectional(be compatible with classical 8051 MCUs) */
@@ -77,15 +77,15 @@ typedef struct
 /*****************************************************************************
  *                          function declare                                 *
  *****************************************************************************/
-void GPIO_config(PERIPH_GPIO gpio,GPIO_configTypeDef *gc);
-void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,FunctionalState f);
-void GPIO_configMode(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin,GPIO_mode mode);
+void GPIO_config(PERIPH_GPIO gpio, GPIO_configTypeDef *gc);
+void GPIO_configBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin, FunctionalState f);
+void GPIO_configMode(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin, GPIO_mode mode);
 void GPIO_configPortValue(PERIPH_GPIO gpio,byte val);
-FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+FunctionalState GPIO_getBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
 byte GPIO_getPortValue(PERIPH_GPIO gpio);
-void GPIO_resetBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_resetBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
 void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
-void GPIO_toggleBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin);
+void GPIO_toggleBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin);
 void GPIO_P44_cmd(Action a);
 void GPIO_P45_cmd(Action a);
 void GPIO_P46_cmd(Action a);

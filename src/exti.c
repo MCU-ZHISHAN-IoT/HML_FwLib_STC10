@@ -16,6 +16,27 @@
 /** 
  * \author      Weilun Fong
  * \date        
+ * \brief       disable or enable target EXTI module
+ * \param[in]   exti: target EXTI module
+ * \param[in]   a   : expected status
+ * \return      none
+ * \ingroup     EXTI
+ * \remarks     
+******************************************************************************/
+void EXTI_cmd(PERIPH_EXTI exti, Action a)
+{
+    switch(exti)
+    {
+        case PERIPH_EXTI_0: EX0 = a; break;
+        case PERIPH_EXTI_1: EX1 = a; break;
+        default: break;
+    }
+}
+
+/*****************************************************************************/
+/** 
+ * \author      Weilun Fong
+ * \date        
  * \brief       configure function for EXTI module
  * \param[in]   exti: target EXTI module
  * \param[in]   ec  : the pointer of configuration structure which includes all 
@@ -24,31 +45,10 @@
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_config(PERIPH_EXTI exti,EXTI_configTypeDef *ec)
+void EXTI_config(PERIPH_EXTI exti, EXTI_configTypeDef *ec)
 {
-    EXTI_setMode(exti,ec->mode);
-    EXTI_setPriority(exti,ec->priority);
-}
-
-/*****************************************************************************/
-/** 
- * \author      Weilun Fong
- * \date        
- * \brief       disable or enable target EXTI module
- * \param[in]   exti: target EXTI module
- * \param[in]   a   : expected status
- * \return      none
- * \ingroup     EXTI
- * \remarks     
-******************************************************************************/
-void EXTI_cmd(PERIPH_EXTI exti,Action a)
-{
-    switch(exti)
-    {
-        case PERIPH_EXTI_0: EX0 = a; break;
-        case PERIPH_EXTI_1: EX1 = a; break;
-        default: break;
-    }
+    EXTI_setMode(exti, ec->mode);
+    EXTI_setPriority(exti, ec->priority);
 }
 
 /*****************************************************************************/
