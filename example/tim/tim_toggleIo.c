@@ -37,9 +37,9 @@ void sys_init(void)
     tc.prescaler         = TIM_prescaler_12;
     tc.value             = 65536-50000;
 
-    TIM_config(PERIPH_TIM_0,&tc);
+    TIM_config(PERIPH_TIM_0, &tc);
     enableAllInterrupts();
-    TIM_cmd(PERIPH_TIM_0,ENABLE);
+    TIM_cmd(PERIPH_TIM_0, ENABLE);
 }
 
 /*****************************************************************************/
@@ -55,7 +55,7 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true);
+    while (true);
 }
 
 /*****************************************************************************/
@@ -72,13 +72,13 @@ void tim0_isr(void) __interrupt TF0_VECTOR
 {
     static uint8_t i = 0;
 
-    TIM_setValue(PERIPH_TIM_0,65536-50000); /* reload initial value */
+    TIM_setValue(PERIPH_TIM_0, 65536-50000); /* reload initial value */
     i++;
 
     /* 20*50ms = 1s */
-    if(i >= 20)
+    if (i >= 20)
     {
-        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
+        GPIO_toggleBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0);
         i = 0;     /* clear */
     }
 }

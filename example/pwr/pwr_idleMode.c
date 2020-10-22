@@ -29,13 +29,13 @@
 void sys_init(void)
 {
     EXTI_configTypeDef ec;
-    
+
     ec.mode     = EXTI_mode_fallEdge;
     ec.priority = DISABLE;
-    EXTI_config(PERIPH_EXTI_0,&ec);
-    EXTI_cmd(PERIPH_EXTI_0,ENABLE);
+    EXTI_config(PERIPH_EXTI_0, &ec);
+    EXTI_cmd(PERIPH_EXTI_0, ENABLE);
 
-    GPIO_configPortValue(PERIPH_GPIO_1,0xFF);
+    GPIO_configPortValue(PERIPH_GPIO_1, 0xFF);
     enableAllInterrupts();
 }
 
@@ -52,17 +52,17 @@ void sys_init(void)
 void main(void)
 {
     sys_init();
-    while(true)
+    while (true)
     {
         sleep(200);
-        GPIO_toggleBitValue(PERIPH_GPIO_1,PERIPH_GPIO_PIN_0);
+        GPIO_toggleBitValue(PERIPH_GPIO_1, PERIPH_GPIO_PIN_0);
         
         /* check state of KEY(connected to P33) */
-        if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+        if (GPIO_getBitValue(PERIPH_GPIO_3, PERIPH_GPIO_PIN_3) == RESET)
         {
             /* avoid shake */
             sleep(5);
-            if(GPIO_getBitValue(PERIPH_GPIO_3,PERIPH_GPIO_PIN_3) == RESET)
+            if (GPIO_getBitValue(PERIPH_GPIO_3, PERIPH_GPIO_PIN_3) == RESET)
             {
                 PWR_idle();  /* enter into idle mode */
             }

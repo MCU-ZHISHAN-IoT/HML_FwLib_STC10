@@ -63,3 +63,4 @@
            (3)optimize compile select
            (4)add function UART_getByte and UART_sendHex
            (5)optimize function GPIO_config
+           (6)refactor sleep function

@@ -29,7 +29,7 @@
 void sys_init(void)
 {
     UART_configTypeDef uc;
-    
+
     uc.baudrate                    = 115200;                        /* baud rate is 115200bps */
     uc.baudrateGenerator           = UART_baudrateGenerator_brt;    /* select BRT as baud rate generator */
     uc.baudGeneratorPrescalerState = DISABLE;                       /* 1T mode */
@@ -54,13 +54,13 @@ void sys_init(void)
  * \remarks     
 ******************************************************************************/
 void main(void)
-{    
+{
     sys_init();
 
-    while(true)
+    while (true)
     {
         /* send per 500ms */
         sleep(500);
-        UART_sendString("Hello,world!\r\n");
+        UART_sendString("Hello, world!\r\n");
     }
 }

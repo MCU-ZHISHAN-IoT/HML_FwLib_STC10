@@ -25,7 +25,7 @@
 ******************************************************************************/
 void EXTI_cmd(PERIPH_EXTI exti, Action a)
 {
-    switch(exti)
+    switch (exti)
     {
         case PERIPH_EXTI_0: EX0 = a; break;
         case PERIPH_EXTI_1: EX1 = a; break;
@@ -57,17 +57,17 @@ void EXTI_config(PERIPH_EXTI exti, EXTI_configTypeDef *ec)
  * \date        
  * \brief       configure work mode of target EXTI module
  * \param[in]   exti: target EXTI module
- * \param[in]   mod : expected work mode
+ * \param[in]   mode: expected work mode
  * \return      none
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
+void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mode)
 {
-    switch(exti)
+    switch (exti)
     {
-        case PERIPH_EXTI_0: IT0 = mod; break;
-        case PERIPH_EXTI_1: IT1 = mod; break;
+        case PERIPH_EXTI_0: IT0 = mode; break;
+        case PERIPH_EXTI_1: IT1 = mode; break;
         default: break;
     }
 }
@@ -83,9 +83,9 @@ void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mod)
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_setPriority(PERIPH_EXTI exti,Action a)
+void EXTI_setPriority(PERIPH_EXTI exti, Action a)
 {
-    switch(exti)
+    switch (exti)
     {
         case PERIPH_EXTI_0: PX0 = a; break;
         case PERIPH_EXTI_1: PX1 = a; break;
