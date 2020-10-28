@@ -186,7 +186,7 @@ void TIM_setFunction(PERIPH_TIM tim, TIM_function f)
  * \ingroup     TIM
  * \remarks     
 ******************************************************************************/
-void TIM_setMode(PERIPH_TIM tim,TIM_mode mode)
+void TIM_setMode(PERIPH_TIM tim, TIM_mode mode)
 {
     switch (tim)
     {

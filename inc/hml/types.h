@@ -45,8 +45,8 @@
  * |        int64_t         |    signed 64-bit integer    |
  * ========================================================
  *
- * @note: base data types are all defined in original header files provides by
- *        SDCC official
+ * \note base data types are all defined in original header files provides by
+ *       SDCC official
  */
 
 /*****************************************************************************

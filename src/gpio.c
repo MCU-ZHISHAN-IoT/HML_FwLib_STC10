@@ -73,29 +73,10 @@ void GPIO_configMode(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin, GPIO_mode mode)
     /**
      * \note obtain mode bit
      */
-    if (TESTB(mode, 0))
-    {
-        m0 = pin;
-    }
-    else
-    {
-        m0 = ~pin;
-    }
-    if (TESTB(mode, 1))
-    {
-        m1 = pin;
-    }
-    else
-    {
-        m1 = ~pin;
-    }
 
-    m0 = m0 & pin;      /* reserve target bit and clear other bits */
-    m1 = m1 & pin;
+    m0 = (TESTB(mode, 0)?pin:(~pin)) & pin;
+    m1 = (TESTB(mode, 1)?pin:(~pin)) & pin;
 
-    /**
-     * \note obtain mode bit
-     */
     switch (gpio)
     {
         /* P0 */
@@ -239,7 +220,7 @@ void GPIO_resetBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin)
  * \ingroup     GPIO
  * \remarks     
 ******************************************************************************/
-void GPIO_setBitValue(PERIPH_GPIO gpio,PERIPH_GPIO_PIN pin)
+void GPIO_setBitValue(PERIPH_GPIO gpio, PERIPH_GPIO_PIN pin)
 {
     switch (gpio)
     {

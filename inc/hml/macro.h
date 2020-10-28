@@ -27,7 +27,7 @@
  */
 
 /**
- * \note it seems that some models are actually exist on market, but we can't
+ * \note  it seems that some models are actually exist on market, but we can't
  *        find them on current datasheet and disable their model macro via code
  *        comment
  */

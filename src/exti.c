@@ -62,7 +62,7 @@ void EXTI_config(PERIPH_EXTI exti, EXTI_configTypeDef *ec)
  * \ingroup     EXTI
  * \remarks     
 ******************************************************************************/
-void EXTI_setMode(PERIPH_EXTI exti,EXTI_mode mode)
+void EXTI_setMode(PERIPH_EXTI exti, EXTI_mode mode)
 {
     switch (exti)
     {
