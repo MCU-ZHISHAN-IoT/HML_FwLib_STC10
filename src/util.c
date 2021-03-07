@@ -60,13 +60,13 @@ uint16_t pow(uint8_t x, uint8_t y)
 {
     uint8_t base = x;
 
-    if(y == 0)
+    if (y == 0)
     {
         return 1;
     }
     else
     {
-        while(--y)
+        while (--y)
         {
             x = x*base;
         }

@@ -96,7 +96,7 @@ void UART_config(UART_configTypeDef *uc)
     if (uc->baudrateGenerator == UART_baudrateGenerator_brt)
     {
         RCC_BRT_cmd(ENABLE);
-        if(uc->baudGeneratorPrescalerState)
+        if (uc->baudGeneratorPrescalerState)
         {
             RCC_BRT_setPrescaler(RCC_BRT_prescaler_12);
         }
@@ -114,7 +114,7 @@ void UART_config(UART_configTypeDef *uc)
         tc.mode              = TIM_mode_2;
 
         /* configure prescaler */
-        if(uc->baudGeneratorPrescalerState)
+        if (uc->baudGeneratorPrescalerState)
         {
             tc.prescaler = TIM_prescaler_12;
         }

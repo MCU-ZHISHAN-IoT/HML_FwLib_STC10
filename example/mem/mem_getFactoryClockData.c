@@ -99,7 +99,7 @@ void util_byteToHexString(byte src, char *res)
         res--;
         tmp = src % 0x10;
 
-        if(tmp < 10)
+        if (tmp < 10)
         {
             *res = '0' + tmp;
         }
