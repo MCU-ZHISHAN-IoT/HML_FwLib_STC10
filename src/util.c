@@ -56,24 +56,23 @@ void enableAllInterrupts(void)
  *              (2)due to SDCC doesn't provide this function, we write a lite 
  *              version here
 ******************************************************************************/
+#if HAVE_HML_POW
+
 uint16_t pow(uint8_t x, uint8_t y)
 {
-    uint8_t base = x;
+    uint16_t ans = 1;
 
-    if (y == 0)
+    while (y)
     {
-        return 1;
-    }
-    else
-    {
-        while (--y)
-        {
-            x = x*base;
-        }
+        if(y & 0x1) ans *= x;
+        x *= x;
+        y >>= 1;
     }
 
-    return x;
+    return ans;
 }
+
+#endif
 
 /*****************************************************************************/
 /**

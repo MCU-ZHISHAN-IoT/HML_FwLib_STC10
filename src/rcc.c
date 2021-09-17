@@ -89,7 +89,7 @@ void RCC_BRT_setValue(uint8_t val)
 void RCC_setClockDivisionFactor(RCC_prescaler d)
 {
     CLK_DIV = (byte)d;
-    df = pow(2, d);
+    df = 0x01 << d;
 }
 
 /*****************************************************************************/

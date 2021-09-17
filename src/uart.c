@@ -168,16 +168,16 @@ uint16_t UART_getBaudGeneratorInitValue(UART_baudrateGenerator gen, uint32_t bau
     if (flag_pre)
     {
         /* check overflow */
-        if (baud < RCC_getSystemClockFrequency()/16*pow(2, flag_smod))
+        if (baud < RCC_getSystemClockFrequency()/16*(0x01 << flag_smod))
         {
             res = (uint8_t)(256 - RCC_getSystemClockFrequency()/baud/32);
         }
     }
     else
     {
-        if (baud < RCC_getSystemClockFrequency()/12/16*pow(2, flag_smod))
+        if (baud < RCC_getSystemClockFrequency()/12/16*(0x01 << flag_smod))
         {
-            res = (uint8_t)(256 - RCC_getSystemClockFrequency()/baud/12/32*pow(2, flag_smod));
+            res = (uint8_t)(256 - RCC_getSystemClockFrequency()/baud/12/32*(0x01 << flag_smod));
         }
     }
 

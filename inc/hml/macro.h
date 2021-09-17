@@ -228,3 +228,7 @@
 #endif
 
 #endif
+
+#if (__CONF_HML_POW == 1)
+    #define HAVE_HML_POW
+#endif

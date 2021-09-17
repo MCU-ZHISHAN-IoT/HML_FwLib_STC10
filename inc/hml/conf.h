@@ -24,6 +24,13 @@
 #endif
 
 /**
+ *\brief enable pow() function provided by HML
+ */
+#ifndef __CONF_HML_POW
+    #define __CONF_HML_POW 0
+#endif
+
+/**
  * \brief configure module of MCU
  */
 #ifndef __CONF_MCU_MODEL
