@@ -56,7 +56,7 @@ void enableAllInterrupts(void)
  *              (2)due to SDCC doesn't provide this function, we write a lite 
  *              version here
 ******************************************************************************/
-#if HAVE_HML_POW
+#ifdef HAVE_HML_POW
 
 uint16_t pow(uint8_t x, uint8_t y)
 {
