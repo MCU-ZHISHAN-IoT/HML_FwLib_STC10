@@ -161,6 +161,11 @@
     #define COMPILE_WDT
 #endif
 
+/**
+ * \brief for unused variable to disable SDCC warning
+ */
+#define UNUSED(x) ((void)(x))
+
 /*****************************************************************************
  *                           run-time check                                  *
  *****************************************************************************/
