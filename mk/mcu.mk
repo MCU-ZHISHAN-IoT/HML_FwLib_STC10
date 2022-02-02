@@ -2,13 +2,13 @@
 
 # ------------------------------------------------------------------------
 # Author     : Weilun Fong | wlf@zhishan-iot.tk
-# Date       : 2020-02-14
+# Date       : 2020-02-26
 # Description: MCU parameters config Makefile
 # E-mail     : mcu@zhishan-iot.tk
 # Make-tool  : GNU Make (http://www.gnu.org/software/make/manual/make.html)
 # Page       : https://hw.zhishan-iot.tk/page/hml/detail/fwlib_stc10.html
 # Project    : HML_FwLib_STC10
-# Version    : v0.3.1
+# Version    : v0.4.2
 # ------------------------------------------------------------------------
 
 # Print note information
@@ -132,10 +132,11 @@ endif
 #    --code-size        Code Segment size
 #    --iram-size        Internal Ram size
 #    --xram-size        External Ram size
-export CFLAGS := -c -I$(DIR_INC) \
+#    --Werror           Treat the warnings as errors
+export CFLAGS := -c -I$(INCDIR) \
 -mmcs51 -D__CONF_MCU_MODEL=$(MCU_MACRO) \
 -D__CONF_FRE_CLKIN=$(CLOCK_FREQUENCY)UL \
---std-sdcc99 --fsigned-char \
+--std-sdcc99 --fsigned-char --Werror \
 --opt-code-size \
 --code-loc 0x0000 --code-size $(CODE_SIZE) \
 --iram-size $(IRAM_SIZE) \
